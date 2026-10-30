@@ -1,9 +1,10 @@
 # Legislation Tracker (demo)
 
-We built a legislation tracker for a newsroom as a UWA Industrial Project. The
-system follows each bill through a state parliament, keeps a permanent record
-of its steps, emails reporters when an important step happens, and gives them
-a dashboard that suggests a few bills to check each day.
+We built a legislation tracker for a newsroom, our industry partner, as a UWA
+Industrial Project.
+The system follows each bill through a state parliament, keeps a permanent
+record of its steps, emails reporters when an important step happens, and
+gives them a dashboard that suggests a few bills to check each day.
 
 This repository holds a **portfolio demo** of that dashboard. You can click
 through it as a reporter would, but we replaced the real data with made-up
@@ -16,13 +17,13 @@ not here.
 > real data: the bills, members, votes, documents and text are fictional.
 > Bills go by "Bill A", "Bill B" and so on, members by "Member A" onwards,
 > parties by "Party 1" to "Party 4", and the text is filler. The numbers on the
-> pages do not match the real system, and nothing here connects to a real
-> parliament, organisation or database.
+> pages do not match the real system, and nothing here connects to the
+> partner's systems, a real parliament or a real database.
 
 ## The problem
 
-Reporters at the newsroom followed bills by checking the parliament's website
-by hand. The parliament publishes each bill's progress across scattered web
+Reporters at the newsroom followed bills by checking the parliament's
+website by hand. The parliament publishes each bill's progress across scattered web
 pages, with no data feed and no timetable. A bill can sit in a committee for
 weeks and then move overnight, so a reporter cannot tell when to look, and a
 step they find a day late is stale news. Checking several times a day costs
