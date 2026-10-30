@@ -11,7 +11,7 @@ real dashboard, but the real data has been replaced with made-up data, the
 real names have been removed, and the parts that collect, store and send are
 not included.
 
-**Live demo:** https://aldyantopratama23-creator.github.io/legislation-tracker-demo/
+**Live demo:** https://apratama23.github.io/legislation-tracker-demo/
 
 > **Disclaimer.** This is a demo for portfolio purposes only. The real data is
 > disguised: every bill, member, vote, document and piece of text here is
