@@ -235,7 +235,8 @@ We checked the real system four ways:
 
 ## What the demo leaves out
 
-- **Sign-in.** The sign-in screen has one button that enters the demo.
+- **Sign-in.** The demo opens straight on the dashboard as a fictional
+  administrator, User A.
 - **Email and collection.** The demo sends no email and reads no website.
 - **Live ranking.** The demo checks and saves Worth a look settings but does
   not re-rank the list.

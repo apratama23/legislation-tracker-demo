@@ -1572,7 +1572,6 @@ form[data-dirty]:has(button[type=submit]:not([aria-disabled])) .panel-foot{
   .demo-banner .when .sep{display:none}
   .site-foot{padding:16px 14px 28px}
 }
-.whoami a.signout{color:var(--brand-dark);font-size:var(--t-label)}
 .login-form .button{display:flex}
 .linkish{background:none;border:0;padding:0;color:var(--brand-dark);font:inherit;font-size:var(--t-label);text-decoration:underline;cursor:pointer}
 .linkish:hover{background:none;color:var(--brand-dark);text-decoration-thickness:2px}
