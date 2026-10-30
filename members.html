@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Members · Legislation Tracker demo</title>
+<meta name="description" content="A demo of a legislation tracker dashboard, built as a UWA Industrial Project. All data is fictional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="static/app.css?v=549cc8dd85">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="demo-banner" role="note">
+  <b>Demo with fictional data</b> <span class="sep">·</span> UWA Industrial Project
+  <span class="when"><span class="sep">·</span> Demo date: 1 October 2026</span>
+</div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="index.html">
+      <span class="wordmark">Legislation Tracker</span>
+      <span class="demo-tag">DEMO</span>
+    </a>
+    <nav class="primary" aria-label="Sections">
+      <a href="index.html" >Feed</a>
+      <a href="bills.html" >Bills</a>
+      <a href="trends.html" >Trends</a>
+      <a href="votes.html" aria-current="page">Votes</a>
+      <a href="watching.html" >Watching</a>
+      <span class="nav-admin">
+        <a href="health.html" >System health</a>
+        <a href="settings.html" >Settings</a>
+        <a href="accounts.html" >People</a>
+      </span>
+      <details class="nav-more">
+        <summary>More</summary>
+        <div class="nav-more-menu">
+          <a href="health.html" >System health</a>
+          <a href="settings.html" >Settings</a>
+          <a href="accounts.html" >People</a>
+        </div>
+      </details>
+    </nav>
+    <div class="whoami">
+      <span>User A · admin</span>
+      <a class="signout" href="signin.html">Sign out</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="page-head">
+  <h1>Members</h1>
+  <p class="page-note" data-count>50 shown</p>
+</div>
+<nav class="settings-tabs" aria-label="Recorded votes">
+  <a href="votes.html">Votes</a>
+  <a href="members.html" aria-current="page">Members</a>
+</nav><p class="page-note" style="margin:-8px 0 20px">
+  Every member, and how often each was named in a recorded vote, counted from
+  the names printed under each division.
+</p>
+<div class="panel" style="margin-bottom:18px">
+  <div class="panel-head" style="border-bottom:0">
+    <form class="searchbar" data-list-form role="search">
+      <div class="f-search">
+        <label class="sr-only" for="member-q">Member's name</label>
+        <input type="search" id="member-q" name="q" maxlength="80" placeholder="Search by name, e.g. Member K" autocomplete="off">
+      </div>
+      <div class="f-pick">
+        <label class="sr-only" for="member-house">Chamber</label>
+        <select id="member-house" name="house">
+          <option value="">Any chamber</option>
+          <option value="LA">Legislative Assembly</option>
+          <option value="LC">Legislative Council</option>
+        </select>
+      </div>
+      <div class="f-do">
+        <button type="submit">Apply</button>
+        <a class="button secondary" id="clear" href="members.html" hidden>Clear</a>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="panel" data-empty hidden><div class="empty"><strong>No member matches</strong>Try part of a name.</div></div>
+
+<div class="panel" data-group>
+  <div class="panel-head">
+    <h2>Legislative Assembly</h2>
+    <span class="page-note">30 members</span>
+  </div>
+  <div class="table-wrap">
+  <table class="cards members-table">
+    <thead><tr>
+      <th scope="col">Member</th><th scope="col">How they voted</th>
+      <th scope="col">With the winning side</th><th scope="col">Last vote</th>
+    </tr></thead>
+    <tbody>
+      <tr data-row data-text="member a" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/1.html">Member A</a>
+          <span class="page-note"> Party 1 · District 1</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:84%"></span></span><span class="mnums">16 aye · 3 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">19 of 19</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member b" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/2.html">Member B</a>
+          <span class="page-note"> Party 1 · District 2</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:85%"></span></span><span class="mnums">17 aye · 3 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">20 of 20</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member c" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/3.html">Member C</a>
+          <span class="page-note"> Party 1 · District 3</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:84%"></span></span><span class="mnums">16 aye · 3 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">19 of 19</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member d" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/4.html">Member D</a>
+          <span class="page-note"> Party 3 · District 4</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:17%"></span></span><span class="mnums">3 aye · 15 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 18</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member e" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/5.html">Member E</a>
+          <span class="page-note"> Party 3 · District 5</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:12%"></span></span><span class="mnums">2 aye · 15 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 17</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member f" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/6.html">Member F</a>
+          <span class="page-note"> Party 3 · District 6</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:13%"></span></span><span class="mnums">2 aye · 13 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 15</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member g" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/7.html">Member G</a>
+          <span class="page-note"> Party 3 · District 7</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:14%"></span></span><span class="mnums">3 aye · 18 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 21</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member h" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/8.html">Member H</a>
+          <span class="page-note"> Party 1 · District 8</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:87%"></span></span><span class="mnums">13 aye · 2 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">15 of 15</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member i" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/9.html">Member I</a>
+          <span class="page-note"> Party 1 · District 9</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:89%"></span></span><span class="mnums">17 aye · 2 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">19 of 19</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member j" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/10.html">Member J</a>
+          <span class="page-note"> Party 1 · District 10</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:85%"></span></span><span class="mnums">17 aye · 3 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">20 of 20</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member k" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/11.html">Member K</a>
+          <span class="page-note"> Party 1 · District 11</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:89%"></span></span><span class="mnums">17 aye · 2 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">19 of 19</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member l" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/12.html">Member L</a>
+          <span class="page-note"> Party 1 · District 12</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:89%"></span></span><span class="mnums">17 aye · 2 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">19 of 19</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member m" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/13.html">Member M</a>
+          <span class="page-note"> Party 3 · District 13</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:11%"></span></span><span class="mnums">2 aye · 17 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 19</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member n" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/14.html">Member N</a>
+          <span class="page-note"> Party 1 · District 14</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:85%"></span></span><span class="mnums">17 aye · 3 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">20 of 20</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member o" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/15.html">Member O</a>
+          <span class="page-note"> Party 2 · District 15</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:83%"></span></span><span class="mnums">15 aye · 3 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">18 of 18</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member p" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/16.html">Member P</a>
+          <span class="page-note"> Party 4 · District 16</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:56%"></span></span><span class="mnums">10 aye · 8 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:61%"></span></span><span class="mnums">11 of 18</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member q" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/17.html">Member Q</a>
+          <span class="page-note"> Party 3 · District 17</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:15%"></span></span><span class="mnums">3 aye · 17 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 20</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member r" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/18.html">Member R</a>
+          <span class="page-note"> Party 3 · District 18</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:16%"></span></span><span class="mnums">3 aye · 16 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 19</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member s" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/19.html">Member S</a>
+          <span class="page-note"> Party 1 · District 19</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:86%"></span></span><span class="mnums">18 aye · 3 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">21 of 21</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member t" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/20.html">Member T</a>
+          <span class="page-note"> Party 4 · District 20</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:60%"></span></span><span class="mnums">12 aye · 8 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:65%"></span></span><span class="mnums">13 of 20</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member u" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/21.html">Member U</a>
+          <span class="page-note"> Party 3 · District 21</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:18%"></span></span><span class="mnums">3 aye · 14 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 17</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member v" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/22.html">Member V</a>
+          <span class="page-note"> Party 1 · District 22</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:86%"></span></span><span class="mnums">18 aye · 3 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">21 of 21</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member w" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/23.html">Member W</a>
+          <span class="page-note"> Party 1 · District 23</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:89%"></span></span><span class="mnums">16 aye · 2 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">18 of 18</span></span>
+        </td>
+        <td data-label="Last vote">Thu 20 Aug 2026</td>
+      </tr>
+      <tr data-row data-text="member x" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/24.html">Member X</a>
+          <span class="page-note"> Party 1 · District 24</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:86%"></span></span><span class="mnums">18 aye · 3 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">21 of 21</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member y" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/25.html">Member Y</a>
+          <span class="page-note"> Party 2 · District 25</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:83%"></span></span><span class="mnums">15 aye · 3 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">18 of 18</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member z" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/26.html">Member Z</a>
+          <span class="page-note"> Party 1 · District 26</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:85%"></span></span><span class="mnums">17 aye · 3 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">20 of 20</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member aa" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/27.html">Member AA</a>
+          <span class="page-note"> Party 1 · District 27</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:84%"></span></span><span class="mnums">16 aye · 3 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">19 of 19</span></span>
+        </td>
+        <td data-label="Last vote">Thu 10 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member ab" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/28.html">Member AB</a>
+          <span class="page-note"> Party 3 · District 28</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:12%"></span></span><span class="mnums">2 aye · 15 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 17</span></span>
+        </td>
+        <td data-label="Last vote">Thu 20 Aug 2026</td>
+      </tr>
+      <tr data-row data-text="member ac" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/29.html">Member AC</a>
+          <span class="page-note"> Party 3 · District 29 · no longer sitting</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:12%"></span></span><span class="mnums">1 aye · 7 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 8</span></span>
+        </td>
+        <td data-label="Last vote">Thu 15 Aug 2024</td>
+      </tr>
+      <tr data-row data-text="member ad" data-house="LA">
+        <td data-label="Member">
+          <a class="member-link" href="members/30.html">Member AD</a>
+          <span class="page-note"> Party 1 · District 30 · no longer sitting</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">7 aye · 0 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">7 of 7</span></span>
+        </td>
+        <td data-label="Last vote">Thu 15 Aug 2024</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+<div class="panel" data-group>
+  <div class="panel-head">
+    <h2>Legislative Council</h2>
+    <span class="page-note">20 members</span>
+  </div>
+  <div class="table-wrap">
+  <table class="cards members-table">
+    <thead><tr>
+      <th scope="col">Member</th><th scope="col">How they voted</th>
+      <th scope="col">With the winning side</th><th scope="col">Last vote</th>
+    </tr></thead>
+    <tbody>
+      <tr data-row data-text="member ae" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/31.html">Member AE</a>
+          <span class="page-note"> Party 4 · Region 1</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:56%"></span></span><span class="mnums">9 aye · 7 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:56%"></span></span><span class="mnums">9 of 16</span></span>
+        </td>
+        <td data-label="Last vote">Thu 24 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member af" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/32.html">Member AF</a>
+          <span class="page-note"> Party 1 · Region 2</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:76%"></span></span><span class="mnums">13 aye · 4 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">17 of 17</span></span>
+        </td>
+        <td data-label="Last vote">Thu 24 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member ag" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/33.html">Member AG</a>
+          <span class="page-note"> Party 3 · Region 3</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:24%"></span></span><span class="mnums">4 aye · 13 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 17</span></span>
+        </td>
+        <td data-label="Last vote">Thu 24 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member ah" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/34.html">Member AH</a>
+          <span class="page-note"> Party 4 · Region 4</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:50%"></span></span><span class="mnums">8 aye · 8 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:38%"></span></span><span class="mnums">6 of 16</span></span>
+        </td>
+        <td data-label="Last vote">Thu 24 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member ai" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/35.html">Member AI</a>
+          <span class="page-note"> Party 2 · Region 1</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:79%"></span></span><span class="mnums">11 aye · 3 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">14 of 14</span></span>
+        </td>
+        <td data-label="Last vote">Wed 23 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member aj" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/36.html">Member AJ</a>
+          <span class="page-note"> Party 1 · Region 2</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:75%"></span></span><span class="mnums">12 aye · 4 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">16 of 16</span></span>
+        </td>
+        <td data-label="Last vote">Wed 23 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member ak" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/37.html">Member AK</a>
+          <span class="page-note"> Party 1 · Region 3</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:76%"></span></span><span class="mnums">13 aye · 4 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">17 of 17</span></span>
+        </td>
+        <td data-label="Last vote">Thu 24 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member al" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/38.html">Member AL</a>
+          <span class="page-note"> Party 1 · Region 4</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:73%"></span></span><span class="mnums">11 aye · 4 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">15 of 15</span></span>
+        </td>
+        <td data-label="Last vote">Wed 23 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member am" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/39.html">Member AM</a>
+          <span class="page-note"> Party 2 · Region 1</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:73%"></span></span><span class="mnums">11 aye · 4 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">15 of 15</span></span>
+        </td>
+        <td data-label="Last vote">Thu 24 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member an" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/40.html">Member AN</a>
+          <span class="page-note"> Party 1 · Region 2</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:76%"></span></span><span class="mnums">13 aye · 4 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">17 of 17</span></span>
+        </td>
+        <td data-label="Last vote">Thu 24 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member ao" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/41.html">Member AO</a>
+          <span class="page-note"> Party 3 · Region 3</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:25%"></span></span><span class="mnums">4 aye · 12 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 16</span></span>
+        </td>
+        <td data-label="Last vote">Thu 24 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member ap" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/42.html">Member AP</a>
+          <span class="page-note"> Party 1 · Region 4</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:79%"></span></span><span class="mnums">11 aye · 3 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">14 of 14</span></span>
+        </td>
+        <td data-label="Last vote">Thu 24 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member aq" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/43.html">Member AQ</a>
+          <span class="page-note"> Party 1 · Region 1</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:75%"></span></span><span class="mnums">12 aye · 4 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">16 of 16</span></span>
+        </td>
+        <td data-label="Last vote">Thu 24 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member ar" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/44.html">Member AR</a>
+          <span class="page-note"> Party 3 · Region 2</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:24%"></span></span><span class="mnums">4 aye · 13 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 17</span></span>
+        </td>
+        <td data-label="Last vote">Thu 24 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member as" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/45.html">Member AS</a>
+          <span class="page-note"> Party 3 · Region 3</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:19%"></span></span><span class="mnums">3 aye · 13 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 16</span></span>
+        </td>
+        <td data-label="Last vote">Thu 24 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member at" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/46.html">Member AT</a>
+          <span class="page-note"> Party 3 · Region 4</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:25%"></span></span><span class="mnums">4 aye · 12 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 16</span></span>
+        </td>
+        <td data-label="Last vote">Thu 24 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member au" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/47.html">Member AU</a>
+          <span class="page-note"> Party 1 · Region 1</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:80%"></span></span><span class="mnums">12 aye · 3 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">15 of 15</span></span>
+        </td>
+        <td data-label="Last vote">Thu 24 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member av" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/48.html">Member AV</a>
+          <span class="page-note"> Party 3 · Region 2</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:25%"></span></span><span class="mnums">4 aye · 12 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 16</span></span>
+        </td>
+        <td data-label="Last vote">Thu 24 Sep 2026</td>
+      </tr>
+      <tr data-row data-text="member aw" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/49.html">Member AW</a>
+          <span class="page-note"> Party 3 · Region 3 · no longer sitting</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 aye · 5 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:0%"></span></span><span class="mnums">0 of 5</span></span>
+        </td>
+        <td data-label="Last vote">Thu 1 Aug 2024</td>
+      </tr>
+      <tr data-row data-text="member ax" data-house="LC">
+        <td data-label="Member">
+          <a class="member-link" href="members/50.html">Member AX</a>
+          <span class="page-note"> Party 1 · Region 4 · no longer sitting</span>
+        </td>
+        <td data-label="How they voted">
+          <span class="mval"><span class="mbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">5 aye · 0 no</span></span>
+        </td>
+        <td data-label="With the winning side">
+          <span class="mval"><span class="wbar" aria-hidden="true"><span style="width:100%"></span></span><span class="mnums">5 of 5</span></span>
+        </td>
+        <td data-label="Last vote">Thu 1 Aug 2024</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</main>
+
+<footer class="site-foot">
+  <span>All bills, members, votes and text on this site are fictional.</span>
+  <button type="button" class="linkish" data-reset title="Forget everything this demo saved in your browser">Reset demo</button>
+</footer>
+<script src="static/demo.js?v=549cc8dd85"></script>
+<script src="static/list.js?v=549cc8dd85"></script></body>
+</html>

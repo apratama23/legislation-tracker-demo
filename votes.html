@@ -1,0 +1,1204 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recorded votes · Legislation Tracker demo</title>
+<meta name="description" content="A demo of a legislation tracker dashboard, built as a UWA Industrial Project. All data is fictional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="static/app.css?v=549cc8dd85">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="demo-banner" role="note">
+  <b>Demo with fictional data</b> <span class="sep">·</span> UWA Industrial Project
+  <span class="when"><span class="sep">·</span> Demo date: 1 October 2026</span>
+</div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="index.html">
+      <span class="wordmark">Legislation Tracker</span>
+      <span class="demo-tag">DEMO</span>
+    </a>
+    <nav class="primary" aria-label="Sections">
+      <a href="index.html" >Feed</a>
+      <a href="bills.html" >Bills</a>
+      <a href="trends.html" >Trends</a>
+      <a href="votes.html" aria-current="page">Votes</a>
+      <a href="watching.html" >Watching</a>
+      <span class="nav-admin">
+        <a href="health.html" >System health</a>
+        <a href="settings.html" >Settings</a>
+        <a href="accounts.html" >People</a>
+      </span>
+      <details class="nav-more">
+        <summary>More</summary>
+        <div class="nav-more-menu">
+          <a href="health.html" >System health</a>
+          <a href="settings.html" >Settings</a>
+          <a href="accounts.html" >People</a>
+        </div>
+      </details>
+    </nav>
+    <div class="whoami">
+      <span>User A · admin</span>
+      <a class="signout" href="signin.html">Sign out</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="page-head">
+  <h1>Recorded votes</h1>
+  <div class="sort-bar">
+    <p class="page-note" data-count>38 shown</p>
+    <label class="sort-label" for="sort">Sort by</label>
+    <select id="sort" name="sort" form="vote-search" class="pick sort-pick">
+      <option value="date">Sitting date</option>
+      <option value="margin">Vote balance</option>
+      <option value="name">Name</option>
+    </select>
+    <button type="button" class="button secondary sort-dir" id="sort-dir"
+            data-dirs='{"date desc":"Newest first","date asc":"Oldest first","margin desc":"Biggest win first","margin asc":"Biggest defeat first","name asc":"A to Z","name desc":"Z to A"}'>
+      <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M5 3v10M5 13l-2.5-2.5M5 13l2.5-2.5M11 13V3M11 3L8.5 5.5M11 3l2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Newest first</span>
+    </button>
+  </div>
+</div>
+<nav class="settings-tabs" aria-label="Recorded votes">
+  <a href="votes.html" aria-current="page">Votes</a>
+  <a href="members.html">Members</a>
+</nav><p class="page-note" style="margin:-8px 0 26px;padding-right:16px">
+  Every division held, both chambers. A division is taken when the House is
+  counted and every name recorded. Most business passes on the voices and is
+  not listed here, so an absence is not a sign that nobody objected.
+</p>
+
+<div class="panel" style="margin-bottom:18px">
+  <div class="panel-head" style="border-bottom:0">
+    <form class="searchbar" id="vote-search" data-list-form role="search">
+      <div class="f-search">
+        <label class="sr-only" for="q">Search votes by bill or motion name</label>
+        <input type="search" id="q" name="q" placeholder="Search by bill or motion name, e.g. copper">
+      </div>
+      <div class="f-pick">
+        <label class="sr-only" for="house">Chamber</label>
+        <select id="house" name="house">
+          <option value="">Any chamber</option>
+          <option value="LA">Legislative Assembly</option>
+          <option value="LC">Legislative Council</option>
+        </select>
+      </div>
+      <div class="f-pick">
+        <label class="sr-only" for="on">Bill or motion</label>
+        <select id="on" name="on">
+          <option value="">Bills and motions</option>
+          <option value="bill">On a bill</option>
+          <option value="motion">On a motion</option>
+        </select>
+      </div>
+      <div class="f-pick">
+        <label class="sr-only" for="result">Result</label>
+        <select id="result" name="result">
+          <option value="">Any result</option>
+          <option value="carried">Carried</option>
+          <option value="negatived">Vetoed</option>
+        </select>
+      </div>
+      <div class="f-year">
+        <label class="sr-only" for="year">Year</label>
+        <input type="number" id="year" name="year" min="2000" max="2100" placeholder="Year">
+      </div>
+      <div class="f-do">
+        <button type="submit">Apply</button>
+        <a class="button secondary" id="clear" href="votes.html" hidden>Clear</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="notice" role="status" data-empty hidden>
+  <strong>No recorded vote matches these filters</strong>
+  Try part of the name, or fewer filters. Most business passes on the voices,
+  so a bill with no recorded vote is not unusual.
+</div>
+
+<div>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Thursday 24 September</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2026-09-24">
+  <div data-row data-day="2026-09-24" data-text="bill cc (comet) amendment bill 2026" data-house="LC"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-09-24" data-margin="1" data-name="bill cc (comet) amendment bill 2026">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/38.html">Bill CC (Comet) Amendment Bill 2026</a>
+    <span class="dv-nums">
+      <b>8</b><i>ayes</i><b class="no">7</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Thu 24 Sep 2026</span>
+    <span class="sep">·</span><span>On a bill</span><span class="sep">·</span><span>Clause 13</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 1</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:53.3%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Wednesday 23 September</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2026-09-23">
+  <div data-row data-day="2026-09-23" data-text="bill cc (comet) amendment bill 2026" data-house="LC"
+       data-on="bill" data-result="negatived"
+       data-year="2026" data-date="2026-09-23" data-margin="-4" data-name="bill cc (comet) amendment bill 2026">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/37.html">Bill CC (Comet) Amendment Bill 2026</a>
+    <span class="dv-nums">
+      <b>6</b><i>ayes</i><b class="no">10</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Wed 23 Sep 2026</span>
+    <span class="sep">·</span><span>On a bill</span><span class="sep">·</span><span>Clause 20</span><span class="sep">·</span><span>Moved by Member AR</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-negatived">Vetoed by 4</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:37.5%"></span></span>
+
+<span class="dv-amend lt-whole">Pack my box with five dozen liquor jugs.</span></div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 22 September</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2026-09-22">
+  <div data-row data-day="2026-09-22" data-text="bill cc (comet) amendment bill 2026" data-house="LC"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-09-22" data-margin="4" data-name="bill cc (comet) amendment bill 2026">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/36.html">Bill CC (Comet) Amendment Bill 2026</a>
+    <span class="dv-nums">
+      <b>11</b><i>ayes</i><b class="no">7</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Tue 22 Sep 2026</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 4</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:61.1%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Thursday 10 September</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2026-09-10">
+  <div data-row data-day="2026-09-10" data-text="bill cb (river) repeal bill 2026" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-09-10" data-margin="8" data-name="bill cb (river) repeal bill 2026">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/35.html">Bill CB (River) Repeal Bill 2026</a>
+    <span class="dv-nums">
+      <b>17</b><i>ayes</i><b class="no">9</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Thu 10 Sep 2026</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 8</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:65.4%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Thursday 20 August</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2026-08-20">
+  <div data-row data-day="2026-08-20" data-text="bill bx (willow) bill 2026" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-08-20" data-margin="11" data-name="bill bx (willow) bill 2026">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/34.html">Bill BX (Willow) Bill 2026</a>
+    <span class="dv-nums">
+      <b>19</b><i>ayes</i><b class="no">8</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Thu 20 Aug 2026</span>
+    <span class="sep">·</span><span>On a bill</span><span class="sep">·</span><span>Clause 2</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 11</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:70.4%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Thursday 13 August</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2026-08-13">
+  <div data-row data-day="2026-08-13" data-text="bill bx (willow) bill 2026" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-08-13" data-margin="6" data-name="bill bx (willow) bill 2026">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/33.html">Bill BX (Willow) Bill 2026</a>
+    <span class="dv-nums">
+      <b>16</b><i>ayes</i><b class="no">10</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Thu 13 Aug 2026</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 6</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:61.5%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 11 August</span>
+    <span class="n">2 divisions</span>
+  </div>
+  <div data-day-box="2026-08-11">
+  <div data-row data-day="2026-08-11" data-text="bill bb (river) amendment bill 2025" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-08-11" data-margin="9" data-name="bill bb (river) amendment bill 2025">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/32.html">Bill BB (River) Amendment Bill 2025</a>
+    <span class="dv-nums">
+      <b>17</b><i>ayes</i><b class="no">8</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Tue 11 Aug 2026</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 9</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:68.0%"></span></span>
+
+</div>  </div>
+  <div data-row data-day="2026-08-11" data-text="bill bb (river) amendment bill 2025" data-house="LA"
+       data-on="bill" data-result="negatived"
+       data-year="2026" data-date="2026-08-11" data-margin="-10" data-name="bill bb (river) amendment bill 2025">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/31.html">Bill BB (River) Amendment Bill 2025</a>
+    <span class="dv-nums">
+      <b>7</b><i>ayes</i><b class="no">17</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Tue 11 Aug 2026</span>
+    <span class="sep">·</span><span>On a bill</span><span class="sep">·</span><span>Clause 8</span><span class="sep">·</span><span>Moved by Member Q</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-negatived">Vetoed by 10</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:29.2%"></span></span>
+
+<span class="dv-amend lt-whole">How vexingly quick daft zebras jump.</span>  <span class="dv-warn">The totals are Parliament&#39;s own and are correct. 1 voter could not be named: the text was damaged where the name was printed, so it is left blank rather than guessed at.</span>
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 30 June</span>
+    <span class="n">2 divisions</span>
+  </div>
+  <div data-day-box="2026-06-30">
+  <div data-row data-day="2026-06-30" data-text="motion: report of committee 2" data-house="LC"
+       data-on="motion" data-result="carried"
+       data-year="2026" data-date="2026-06-30" data-margin="6" data-name="motion: report of committee 2">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/30.html">Motion: report of Committee 2</a>
+    <span class="dv-nums">
+      <b>12</b><i>ayes</i><b class="no">6</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Tue 30 Jun 2026</span>
+    <span class="sep">·</span><span>On a motion</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 6</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:66.7%"></span></span>
+
+</div>  </div>
+  <div data-row data-day="2026-06-30" data-text="bill bm (falcon) bill 2026" data-house="LC"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-06-30" data-margin="3" data-name="bill bm (falcon) bill 2026">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/29.html">Bill BM (Falcon) Bill 2026</a>
+    <span class="dv-nums">
+      <b>10</b><i>ayes</i><b class="no">7</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Tue 30 Jun 2026</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 3</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:58.8%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Thursday 18 June</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2026-06-18">
+  <div data-row data-day="2026-06-18" data-text="motion: report of committee 2" data-house="LA"
+       data-on="motion" data-result="carried"
+       data-year="2026" data-date="2026-06-18" data-margin="11" data-name="motion: report of committee 2">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/28.html">Motion: report of Committee 2</a>
+    <span class="dv-nums">
+      <b>18</b><i>ayes</i><b class="no">7</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Thu 18 Jun 2026</span>
+    <span class="sep">·</span><span>On a motion</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 11</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:72.0%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 9 June</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2026-06-09">
+  <div data-row data-day="2026-06-09" data-text="bill ar (willow) amendment bill 2025" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-06-09" data-margin="7" data-name="bill ar (willow) amendment bill 2025">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/27.html">Bill AR (Willow) Amendment Bill 2025</a>
+    <span class="dv-nums">
+      <b>17</b><i>ayes</i><b class="no">10</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Tue 9 Jun 2026</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 7</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:63.0%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Thursday 21 May</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2026-05-21">
+  <div data-row data-day="2026-05-21" data-text="bill ar (willow) amendment bill 2025" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-05-21" data-margin="11" data-name="bill ar (willow) amendment bill 2025">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/26.html">Bill AR (Willow) Amendment Bill 2025</a>
+    <span class="dv-nums">
+      <b>18</b><i>ayes</i><b class="no">7</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Thu 21 May 2026</span>
+    <span class="sep">·</span><span>On a bill</span><span class="sep">·</span><span>Clause 13</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 11</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:72.0%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 19 May</span>
+    <span class="n">2 divisions</span>
+  </div>
+  <div data-day-box="2026-05-19">
+  <div data-row data-day="2026-05-19" data-text="bill an (cedar) amendment bill 2025" data-house="LC"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-05-19" data-margin="4" data-name="bill an (cedar) amendment bill 2025">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/25.html">Bill AN (Cedar) Amendment Bill 2025</a>
+    <span class="dv-nums">
+      <b>10</b><i>ayes</i><b class="no">6</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Tue 19 May 2026</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 4</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:62.5%"></span></span>
+
+</div>  </div>
+  <div data-row data-day="2026-05-19" data-text="bill bf (granite) bill 2026" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-05-19" data-margin="8" data-name="bill bf (granite) bill 2026">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/24.html">Bill BF (Granite) Bill 2026</a>
+    <span class="dv-nums">
+      <b>16</b><i>ayes</i><b class="no">8</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Tue 19 May 2026</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 8</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:66.7%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Thursday 16 April</span>
+    <span class="n">2 divisions</span>
+  </div>
+  <div data-day-box="2026-04-16">
+  <div data-row data-day="2026-04-16" data-text="bill be (willow) repeal bill 2025" data-house="LC"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-04-16" data-margin="5" data-name="bill be (willow) repeal bill 2025">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/23.html">Bill BE (Willow) Repeal Bill 2025</a>
+    <span class="dv-nums">
+      <b>11</b><i>ayes</i><b class="no">6</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Thu 16 Apr 2026</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 5</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:64.7%"></span></span>
+
+</div>  </div>
+  <div data-row data-day="2026-04-16" data-text="bill at (river) repeal bill 2025" data-house="LC"
+       data-on="bill" data-result="negatived"
+       data-year="2026" data-date="2026-04-16" data-margin="-4" data-name="bill at (river) repeal bill 2025">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/22.html">Bill AT (River) Repeal Bill 2025</a>
+    <span class="dv-nums">
+      <b>7</b><i>ayes</i><b class="no">11</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Thu 16 Apr 2026</span>
+    <span class="sep">·</span><span>On a bill</span><span class="sep">·</span><span>Moved by Member AS</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-negatived">Vetoed by 4</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:38.9%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 24 March</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2026-03-24">
+  <div data-row data-day="2026-03-24" data-text="bill bh (beacon) amendment bill 2026" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-03-24" data-margin="9" data-name="bill bh (beacon) amendment bill 2026">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/21.html">Bill BH (Beacon) Amendment Bill 2026</a>
+    <span class="dv-nums">
+      <b>16</b><i>ayes</i><b class="no">7</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Tue 24 Mar 2026</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 9</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:69.6%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 17 March</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2026-03-17">
+  <div data-row data-day="2026-03-17" data-text="bill bi (river) bill 2026" data-house="LA"
+       data-on="bill" data-result="negatived"
+       data-year="2026" data-date="2026-03-17" data-margin="-5" data-name="bill bi (river) bill 2026">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/20.html">Bill BI (River) Bill 2026</a>
+    <span class="dv-nums">
+      <b>10</b><i>ayes</i><b class="no">15</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Tue 17 Mar 2026</span>
+    <span class="sep">·</span><span>On a bill</span><span class="sep">·</span><span>Clause 16</span><span class="sep">·</span><span>Moved by Member Q</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-negatived">Vetoed by 5</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:40.0%"></span></span>
+
+<span class="dv-amend lt-whole">Pack my box with five dozen liquor jugs.</span></div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 24 February</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2026-02-24">
+  <div data-row data-day="2026-02-24" data-text="bill aw (falcon) amendment bill 2025" data-house="LC"
+       data-on="bill" data-result="negatived"
+       data-year="2026" data-date="2026-02-24" data-margin="-3" data-name="bill aw (falcon) amendment bill 2025">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/19.html">Bill AW (Falcon) Amendment Bill 2025</a>
+    <span class="dv-nums">
+      <b>7</b><i>ayes</i><b class="no">10</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Tue 24 Feb 2026</span>
+    <span class="sep">·</span><span>On a bill</span><span class="sep">·</span><span>Clause 40</span><span class="sep">·</span><span>Moved by Member AO</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-negatived">Vetoed by 3</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:41.2%"></span></span>
+
+<span class="dv-amend lt-whole">The quick brown fox jumps over the lazy dog.</span></div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 10 February</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2026-02-10">
+  <div data-row data-day="2026-02-10" data-text="bill ao (granite) repeal bill 2025" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-02-10" data-margin="7" data-name="bill ao (granite) repeal bill 2025">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/18.html">Bill AO (Granite) Repeal Bill 2025</a>
+    <span class="dv-nums">
+      <b>16</b><i>ayes</i><b class="no">9</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Tue 10 Feb 2026</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 7</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:64.0%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 3 February</span>
+    <span class="n">2 divisions</span>
+  </div>
+  <div data-day-box="2026-02-03">
+  <div data-row data-day="2026-02-03" data-text="bill ar (willow) amendment bill 2025" data-house="LC"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-02-03" data-margin="2" data-name="bill ar (willow) amendment bill 2025">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/17.html">Bill AR (Willow) Amendment Bill 2025</a>
+    <span class="dv-nums">
+      <b>9</b><i>ayes</i><b class="no">7</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Tue 3 Feb 2026</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 2</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:56.2%"></span></span>
+
+</div>  </div>
+  <div data-row data-day="2026-02-03" data-text="bill aw (falcon) amendment bill 2025" data-house="LC"
+       data-on="bill" data-result="carried"
+       data-year="2026" data-date="2026-02-03" data-margin="5" data-name="bill aw (falcon) amendment bill 2025">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/16.html">Bill AW (Falcon) Amendment Bill 2025</a>
+    <span class="dv-nums">
+      <b>11</b><i>ayes</i><b class="no">6</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Tue 3 Feb 2026</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 5</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:64.7%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 25 November</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2025-11-25">
+  <div data-row data-day="2025-11-25" data-text="bill aq (falcon) amendment bill 2025" data-house="LC"
+       data-on="bill" data-result="negatived"
+       data-year="2025" data-date="2025-11-25" data-margin="-1" data-name="bill aq (falcon) amendment bill 2025">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/15.html">Bill AQ (Falcon) Amendment Bill 2025</a>
+    <span class="dv-nums">
+      <b>8</b><i>ayes</i><b class="no">9</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Tue 25 Nov 2025</span>
+    <span class="sep">·</span><span>On a bill</span><span class="sep">·</span><span>Clause 35</span><span class="sep">·</span><span>Moved by Member AS</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-negatived">Vetoed by 1</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:47.1%"></span></span>
+
+<span class="dv-amend lt-whole">Pack my box with five dozen liquor jugs.</span></div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Thursday 16 October</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2025-10-16">
+  <div data-row data-day="2025-10-16" data-text="bill av (copper) bill 2025" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2025" data-date="2025-10-16" data-margin="8" data-name="bill av (copper) bill 2025">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/14.html">Bill AV (Copper) Bill 2025</a>
+    <span class="dv-nums">
+      <b>18</b><i>ayes</i><b class="no">10</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Thu 16 Oct 2025</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 8</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:64.3%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Thursday 15 August</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2024-08-15">
+  <div data-row data-day="2024-08-15" data-text="bill ah (cedar) amendment bill 2024" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2024" data-date="2024-08-15" data-margin="6" data-name="bill ah (cedar) amendment bill 2024">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/13.html">Bill AH (Cedar) Amendment Bill 2024</a>
+    <span class="dv-nums">
+      <b>16</b><i>ayes</i><b class="no">10</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Thu 15 Aug 2024</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 6</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:61.5%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Thursday 1 August</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2024-08-01">
+  <div data-row data-day="2024-08-01" data-text="bill af (meadow) amendment bill 2023" data-house="LC"
+       data-on="bill" data-result="carried"
+       data-year="2024" data-date="2024-08-01" data-margin="4" data-name="bill af (meadow) amendment bill 2023">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/12.html">Bill AF (Meadow) Amendment Bill 2023</a>
+    <span class="dv-nums">
+      <b>11</b><i>ayes</i><b class="no">7</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Thu 1 Aug 2024</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 4</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:61.1%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 11 June</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2024-06-11">
+  <div data-row data-day="2024-06-11" data-text="bill ag (river) amendment bill 2024" data-house="LC"
+       data-on="bill" data-result="carried"
+       data-year="2024" data-date="2024-06-11" data-margin="1" data-name="bill ag (river) amendment bill 2024">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/11.html">Bill AG (River) Amendment Bill 2024</a>
+    <span class="dv-nums">
+      <b>10</b><i>ayes</i><b class="no">9</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Tue 11 Jun 2024</span>
+    <span class="sep">·</span><span>On a bill</span><span class="sep">·</span><span>Clause 7</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 1</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:52.6%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 16 April</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2024-04-16">
+  <div data-row data-day="2024-04-16" data-text="bill af (meadow) amendment bill 2023" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2024" data-date="2024-04-16" data-margin="5" data-name="bill af (meadow) amendment bill 2023">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/10.html">Bill AF (Meadow) Amendment Bill 2023</a>
+    <span class="dv-nums">
+      <b>16</b><i>ayes</i><b class="no">11</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Tue 16 Apr 2024</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 5</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:59.3%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 27 February</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2024-02-27">
+  <div data-row data-day="2024-02-27" data-text="bill ac (meadow) amendment bill 2023" data-house="LA"
+       data-on="bill" data-result="negatived"
+       data-year="2024" data-date="2024-02-27" data-margin="-8" data-name="bill ac (meadow) amendment bill 2023">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/9.html">Bill AC (Meadow) Amendment Bill 2023</a>
+    <span class="dv-nums">
+      <b>9</b><i>ayes</i><b class="no">17</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Tue 27 Feb 2024</span>
+    <span class="sep">·</span><span>On a bill</span><span class="sep">·</span><span>Clause 38</span><span class="sep">·</span><span>Moved by Member AB</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-negatived">Vetoed by 8</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:34.6%"></span></span>
+
+<span class="dv-amend lt-whole">Pack my box with five dozen liquor jugs.</span></div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 7 November</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2023-11-07">
+  <div data-row data-day="2023-11-07" data-text="bill z (orchard) amendment bill 2023" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2023" data-date="2023-11-07" data-margin="9" data-name="bill z (orchard) amendment bill 2023">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/8.html">Bill Z (Orchard) Amendment Bill 2023</a>
+    <span class="dv-nums">
+      <b>18</b><i>ayes</i><b class="no">9</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Tue 7 Nov 2023</span>
+    <span class="sep">·</span><span>On a bill</span><span class="sep">·</span><span>Clause 36</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 9</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:66.7%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 24 October</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2023-10-24">
+  <div data-row data-day="2023-10-24" data-text="bill x (harbour) amendment bill 2023" data-house="LC"
+       data-on="bill" data-result="carried"
+       data-year="2023" data-date="2023-10-24" data-margin="3" data-name="bill x (harbour) amendment bill 2023">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/7.html">Bill X (Harbour) Amendment Bill 2023</a>
+    <span class="dv-nums">
+      <b>11</b><i>ayes</i><b class="no">8</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Tue 24 Oct 2023</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 3</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:57.9%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Wednesday 24 May</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2023-05-24">
+  <div data-row data-day="2023-05-24" data-text="bill v (lantern) repeal bill 2023" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2023" data-date="2023-05-24" data-margin="7" data-name="bill v (lantern) repeal bill 2023">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/6.html">Bill V (Lantern) Repeal Bill 2023</a>
+    <span class="dv-nums">
+      <b>17</b><i>ayes</i><b class="no">10</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Wed 24 May 2023</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 7</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:63.0%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 14 February</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2023-02-14">
+  <div data-row data-day="2023-02-14" data-text="bill u (river) amendment bill 2022" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2023" data-date="2023-02-14" data-margin="8" data-name="bill u (river) amendment bill 2022">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/5.html">Bill U (River) Amendment Bill 2022</a>
+    <span class="dv-nums">
+      <b>18</b><i>ayes</i><b class="no">10</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Tue 14 Feb 2023</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 8</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:64.3%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Wednesday 8 February</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2023-02-08">
+  <div data-row data-day="2023-02-08" data-text="bill u (river) amendment bill 2022" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2023" data-date="2023-02-08" data-margin="9" data-name="bill u (river) amendment bill 2022">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/4.html">Bill U (River) Amendment Bill 2022</a>
+    <span class="dv-nums">
+      <b>18</b><i>ayes</i><b class="no">9</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Wed 8 Feb 2023</span>
+    <span class="sep">·</span><span>On a bill</span><span class="sep">·</span><span>Clause 8</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 9</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:66.7%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 8 November</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2022-11-08">
+  <div data-row data-day="2022-11-08" data-text="bill t (beacon) amendment bill 2022" data-house="LC"
+       data-on="bill" data-result="carried"
+       data-year="2022" data-date="2022-11-08" data-margin="4" data-name="bill t (beacon) amendment bill 2022">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/3.html">Bill T (Beacon) Amendment Bill 2022</a>
+    <span class="dv-nums">
+      <b>12</b><i>ayes</i><b class="no">8</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Tue 8 Nov 2022</span>
+    <span class="sep">·</span><span>On a bill</span><span class="sep">·</span><span>Clause 33</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 4</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:60.0%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 25 October</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2022-10-25">
+  <div data-row data-day="2022-10-25" data-text="bill t (beacon) amendment bill 2022" data-house="LC"
+       data-on="bill" data-result="carried"
+       data-year="2022" data-date="2022-10-25" data-margin="2" data-name="bill t (beacon) amendment bill 2022">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/2.html">Bill T (Beacon) Amendment Bill 2022</a>
+    <span class="dv-nums">
+      <b>10</b><i>ayes</i><b class="no">8</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Tue 25 Oct 2022</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 2</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:55.6%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<section data-group>
+  <div class="dayhead">
+    <span class="d">Tuesday 31 May</span>
+    <span class="n">1 division</span>
+  </div>
+  <div data-day-box="2022-05-31">
+  <div data-row data-day="2022-05-31" data-text="bill r (lantern) amendment bill 2022" data-house="LA"
+       data-on="bill" data-result="carried"
+       data-year="2022" data-date="2022-05-31" data-margin="9" data-name="bill r (lantern) amendment bill 2022">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/1.html">Bill R (Lantern) Amendment Bill 2022</a>
+    <span class="dv-nums">
+      <b>17</b><i>ayes</i><b class="no">8</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-la">Legislative Assembly</span>
+    <span class="sep">·</span><span>Tue 31 May 2022</span>
+    <span class="sep">·</span><span>On a bill</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 9</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:68.0%"></span></span>
+
+</div>  </div>
+  </div>
+</section>
+<div data-flat hidden></div>
+</div>
+</main>
+
+<footer class="site-foot">
+  <span>All bills, members, votes and text on this site are fictional.</span>
+  <button type="button" class="linkish" data-reset title="Forget everything this demo saved in your browser">Reset demo</button>
+</footer>
+<script src="static/demo.js?v=549cc8dd85"></script>
+<script src="static/list.js?v=549cc8dd85"></script></body>
+</html>

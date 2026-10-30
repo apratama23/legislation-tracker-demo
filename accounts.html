@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>People · Legislation Tracker demo</title>
+<meta name="description" content="A demo of a legislation tracker dashboard, built as a UWA Industrial Project. All data is fictional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="static/app.css?v=549cc8dd85">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="demo-banner" role="note">
+  <b>Demo with fictional data</b> <span class="sep">·</span> UWA Industrial Project
+  <span class="when"><span class="sep">·</span> Demo date: 1 October 2026</span>
+</div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="index.html">
+      <span class="wordmark">Legislation Tracker</span>
+      <span class="demo-tag">DEMO</span>
+    </a>
+    <nav class="primary" aria-label="Sections">
+      <a href="index.html" >Feed</a>
+      <a href="bills.html" >Bills</a>
+      <a href="trends.html" >Trends</a>
+      <a href="votes.html" >Votes</a>
+      <a href="watching.html" >Watching</a>
+      <span class="nav-admin">
+        <a href="health.html" >System health</a>
+        <a href="settings.html" >Settings</a>
+        <a href="accounts.html" aria-current="page">People</a>
+      </span>
+      <details class="nav-more">
+        <summary class="is-current">More</summary>
+        <div class="nav-more-menu">
+          <a href="health.html" >System health</a>
+          <a href="settings.html" >Settings</a>
+          <a href="accounts.html" aria-current="page">People</a>
+        </div>
+      </details>
+    </nav>
+    <div class="whoami">
+      <span>User A · admin</span>
+      <a class="signout" href="signin.html">Sign out</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="page-head">
+  <h1>People</h1>
+  <p class="page-note">5 accounts · admins may change settings</p>
+</div>
+
+<div class="panel">
+  <div class="panel-head"><h2>Who can sign in</h2></div>
+  <div class="table-wrap">
+  <table class="snug cards">
+    <thead><tr>
+      <th scope="col">Name</th><th scope="col">Email</th>
+      <th scope="col" class="tight">Role</th><th scope="col" class="tight">Status</th>
+      <th scope="col" class="tight">Last seen</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="row-title">User A</span> <span class="page-note">(you)</span></td>
+        <td data-label="Email">user-a@example.com</td>
+        <td class="tight" data-label="Role"><span class="chip chip-accent">Admin</span></td>
+        <td class="tight" data-label="Status"><span class="chip chip-neutral">Active</span></td>
+        <td class="tight" data-label="Last seen">Tue 22 Sep, 11:10am</td>
+      </tr>
+      <tr>
+        <td><span class="row-title">User B</span></td>
+        <td data-label="Email">user-b@example.com</td>
+        <td class="tight" data-label="Role"><span class="chip chip-accent">Admin</span></td>
+        <td class="tight" data-label="Status"><span class="chip chip-neutral">Active</span></td>
+        <td class="tight" data-label="Last seen">2 hours ago</td>
+      </tr>
+      <tr>
+        <td><span class="row-title">User C</span></td>
+        <td data-label="Email">user-c@example.com</td>
+        <td class="tight" data-label="Role"><span class="chip chip-neutral">Editor</span></td>
+        <td class="tight" data-label="Status"><span class="chip chip-neutral">Active</span></td>
+        <td class="tight" data-label="Last seen">Wed 30 Sep, 10:00am</td>
+      </tr>
+      <tr>
+        <td><span class="row-title">User D</span></td>
+        <td data-label="Email">user-d@example.com</td>
+        <td class="tight" data-label="Role"><span class="chip chip-neutral">Editor</span></td>
+        <td class="tight" data-label="Status"><span class="chip chip-neutral">Active</span></td>
+        <td class="tight" data-label="Last seen">Sat 26 Sep, 5:45pm</td>
+      </tr>
+      <tr>
+        <td><span class="row-title">User E</span></td>
+        <td data-label="Email">user-e@example.com</td>
+        <td class="tight" data-label="Role"><span class="chip chip-neutral">Editor</span></td>
+        <td class="tight" data-label="Status"><span class="chip chip-neutral">Active</span></td>
+        <td class="tight" data-label="Last seen">Wed 23 Sep, 11:50am</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-head"><h2>Invite someone</h2></div>
+  <div class="panel-body">
+    <div class="notice" role="note">
+      <strong>Read only in the demo</strong>
+      The real screen emails an invitation link and the person chooses their own
+      password. The demo sends no email, so this form is shown but switched off.
+    </div>
+    <div class="filters">
+      <div class="field"><label for="display_name">Name</label><input type="text" id="display_name" disabled></div>
+      <div class="field"><label for="new_email">Email</label><input type="email" id="new_email" disabled style="min-width:230px"></div>
+      <div class="field"><label for="role">Role</label><select id="role" class="pick" disabled><option>Editor</option><option>Admin</option></select></div>
+      <button type="button" disabled>Send invitation</button>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-foot">
+  <span>All bills, members, votes and text on this site are fictional.</span>
+  <button type="button" class="linkish" data-reset title="Forget everything this demo saved in your browser">Reset demo</button>
+</footer>
+<script src="static/demo.js?v=549cc8dd85"></script>
+</body>
+</html>

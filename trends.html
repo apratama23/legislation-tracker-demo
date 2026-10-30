@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trends · Legislation Tracker demo</title>
+<meta name="description" content="A demo of a legislation tracker dashboard, built as a UWA Industrial Project. All data is fictional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="static/app.css?v=549cc8dd85">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="demo-banner" role="note">
+  <b>Demo with fictional data</b> <span class="sep">·</span> UWA Industrial Project
+  <span class="when"><span class="sep">·</span> Demo date: 1 October 2026</span>
+</div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="index.html">
+      <span class="wordmark">Legislation Tracker</span>
+      <span class="demo-tag">DEMO</span>
+    </a>
+    <nav class="primary" aria-label="Sections">
+      <a href="index.html" >Feed</a>
+      <a href="bills.html" >Bills</a>
+      <a href="trends.html" aria-current="page">Trends</a>
+      <a href="votes.html" >Votes</a>
+      <a href="watching.html" >Watching</a>
+      <span class="nav-admin">
+        <a href="health.html" >System health</a>
+        <a href="settings.html" >Settings</a>
+        <a href="accounts.html" >People</a>
+      </span>
+      <details class="nav-more">
+        <summary>More</summary>
+        <div class="nav-more-menu">
+          <a href="health.html" >System health</a>
+          <a href="settings.html" >Settings</a>
+          <a href="accounts.html" >People</a>
+        </div>
+      </details>
+    </nav>
+    <div class="whoami">
+      <span>User A · admin</span>
+      <a class="signout" href="signin.html">Sign out</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="page-head">
+  <h1>Trends</h1>
+  <p class="page-note">Parliament 3 only, which opened Tue 20 May 2025</p>
+</div>
+
+<div class="panel">
+  <div class="panel-head">
+    <h2>How long a bill takes to become law</h2>
+    <span class="page-note">8 bills that finished</span>
+  </div>
+  <div class="panel-body">
+    <div class="funnel">
+      <a class="fn-row wide" >
+        <span class="fn-label">Under 2 months</span>
+        <span class="fn-track"><span class="fn-bar" style="width:0.0%"></span></span>
+        <span class="fn-n">0</span>
+      </a>
+      <a class="fn-row" >
+        <span class="fn-label">2 to 4 months</span>
+        <span class="fn-track"><span class="fn-bar" style="width:0.0%"></span></span>
+        <span class="fn-n">0</span>
+      </a>
+      <a class="fn-row" href="bills.html?ids=58B399BC9ED0,B2942A39F898,DC60F9577584&amp;label=Took%3A+4+to+8+months">
+        <span class="fn-label">4 to 8 months</span>
+        <span class="fn-track"><span class="fn-bar" style="width:37.5%"></span></span>
+        <span class="fn-n">3</span>
+      </a>
+      <a class="fn-row" href="bills.html?ids=0D672CCE68DB,68ADB70D427F,856CC7D7A92E,904CCE5CF910,E534F16CFBAE&amp;label=Took%3A+over+8+months">
+        <span class="fn-label">Over 8 months</span>
+        <span class="fn-track"><span class="fn-bar" style="width:62.5%"></span></span>
+        <span class="fn-n">5</span>
+      </a>
+    </div>
+    <p class="fn-note">
+<b>Half of these took longer than 321 days.</b>The quickest took 202 days and the slowest 404.      This counts only bills that have already become law, so it says what has
+      happened and not what will.
+    </p>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-head">
+    <h2>When Parliament is busy</h2>
+    <span class="page-note">bills that moved, each month</span>
+  </div>
+  <div class="panel-body">
+    <div class="rhythm" role="img" aria-label="Bills that moved, each month. Busiest: February 2026, 22 bills moved. No bill moved in 4 months. October 2026 is still under way.">
+      <div class="ry-col quiet" title="May 2025: no bill moved">
+        <span class="ry-n" aria-hidden="true">0</span>
+        <span class="ry-bar" style="height:0%"></span>
+      </div>
+      <a class="ry-col" href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4EBD4658D535,62656562B835,A8819BB1EC34,D0CE95B2BE79&amp;label=Moved+in+June+2025"
+         title="June 2025: 6 bills moved">
+        <span class="ry-n" aria-hidden="true">6</span>
+        <span class="ry-bar" style="height:27%"></span>
+      </a>
+      <div class="ry-col quiet" title="July 2025: no bill moved">
+        <span class="ry-n" aria-hidden="true">0</span>
+        <span class="ry-bar" style="height:0%"></span>
+      </div>
+      <a class="ry-col" href="bills.html?ids=20A05505A7BF,3C3551B051CC,62656562B835,68ADB70D427F,856CC7D7A92E,904CCE5CF910,B2942A39F898,D0CE95B2BE79,D8EFB145B2F4,E534F16CFBAE&amp;label=Moved+in+August+2025"
+         title="August 2025: 10 bills moved">
+        <span class="ry-n" aria-hidden="true">10</span>
+        <span class="ry-bar" style="height:45%"></span>
+      </a>
+      <a class="ry-col" href="bills.html?ids=62656562B835,856CC7D7A92E,887C1DC92E95,8D33B74AEBE8,93C01292D52B,B2942A39F898,D2C1E92E6F1A,E534F16CFBAE&amp;label=Moved+in+September+2025"
+         title="September 2025: 8 bills moved">
+        <span class="ry-n" aria-hidden="true">8</span>
+        <span class="ry-bar" style="height:36%"></span>
+      </a>
+      <a class="ry-col" href="bills.html?ids=3E4A9E7DD06A,887C1DC92E95,A8819BB1EC34,B2942A39F898,D0CE95B2BE79,E7702A7B1796&amp;label=Moved+in+October+2025"
+         title="October 2025: 6 bills moved">
+        <span class="ry-n" aria-hidden="true">6</span>
+        <span class="ry-bar" style="height:27%"></span>
+      </a>
+      <a class="ry-col" href="bills.html?ids=0D672CCE68DB,20A05505A7BF,3E4A9E7DD06A,77192FE320A2,84A14E129830,887C1DC92E95,904CCE5CF910,A8819BB1EC34,D0CE95B2BE79,D2C1E92E6F1A,D8EFB145B2F4,E7702A7B1796&amp;label=Moved+in+November+2025"
+         title="November 2025: 12 bills moved">
+        <span class="ry-n" aria-hidden="true">12</span>
+        <span class="ry-bar" style="height:55%"></span>
+      </a>
+      <a class="ry-col" href="bills.html?ids=01A6C46AE09E,20A05505A7BF,3E4A9E7DD06A,5E7A610FE37C,77192FE320A2,84A14E129830,8CDF525175E4,904CCE5CF910,93C01292D52B,A8819BB1EC34,B2942A39F898,D0CE95B2BE79,E7702A7B1796&amp;label=Moved+in+December+2025"
+         title="December 2025: 13 bills moved">
+        <span class="ry-n" aria-hidden="true">13</span>
+        <span class="ry-bar" style="height:59%"></span>
+      </a>
+      <div class="ry-col quiet year-start" title="January 2026: no bill moved">
+        <span class="ry-n" aria-hidden="true">0</span>
+        <span class="ry-bar" style="height:0%"></span>
+      </div>
+      <a class="ry-col" href="bills.html?ids=0D672CCE68DB,20A05505A7BF,4705FA40E2AD,58A3A3A80E50,58B399BC9ED0,5E7A610FE37C,68ADB70D427F,6A6BA20D4A1A,84A14E129830,856CC7D7A92E,8A89D9F4DCED,8CDF525175E4,8D33B74AEBE8,9294DB446A70,93C01292D52B,990FA0DBB013,B2942A39F898,D8EFB145B2F4,DC60F9577584,E534F16CFBAE,E7702A7B1796,EC8081432936&amp;label=Moved+in+February+2026"
+         title="February 2026: 22 bills moved">
+        <span class="ry-n" aria-hidden="true">22</span>
+        <span class="ry-bar" style="height:100%"></span>
+      </a>
+      <a class="ry-col" href="bills.html?ids=0D672CCE68DB,20A05505A7BF,58A3A3A80E50,58B399BC9ED0,5E7A610FE37C,66B6099DA42C,68ADB70D427F,856CC7D7A92E,8A89D9F4DCED,8D33B74AEBE8,93C01292D52B,B2942A39F898,C0B824E0E12B,DC60F9577584,E534F16CFBAE,E6641547E4E8,EC8081432936&amp;label=Moved+in+March+2026"
+         title="March 2026: 17 bills moved">
+        <span class="ry-n" aria-hidden="true">17</span>
+        <span class="ry-bar" style="height:77%"></span>
+      </a>
+      <a class="ry-col" href="bills.html?ids=0D672CCE68DB,1F3F507DDAF7,2B0C0207865B,58A3A3A80E50,58A74D2F801A,58B399BC9ED0,5E7A610FE37C,66B6099DA42C,6A6BA20D4A1A,7ED85A227FE3,8CDF525175E4,904CCE5CF910,990FA0DBB013,AE7B0E872931,C0B824E0E12B,DC60F9577584,EC8081432936&amp;label=Moved+in+April+2026"
+         title="April 2026: 17 bills moved">
+        <span class="ry-n" aria-hidden="true">17</span>
+        <span class="ry-bar" style="height:77%"></span>
+      </a>
+      <a class="ry-col" href="bills.html?ids=0D672CCE68DB,3E4A9E7DD06A,5047101BE2F8,58B399BC9ED0,66B6099DA42C,856CC7D7A92E,8A89D9F4DCED,8B46B127B1C6,990FA0DBB013,A8819BB1EC34,AE7B0E872931,B5456BC8D157,BCE5524683E9,C0B824E0E12B,D0CE95B2BE79,E534F16CFBAE&amp;label=Moved+in+May+2026"
+         title="May 2026: 16 bills moved">
+        <span class="ry-n" aria-hidden="true">16</span>
+        <span class="ry-bar" style="height:73%"></span>
+      </a>
+      <a class="ry-col" href="bills.html?ids=1F3F507DDAF7,23BFF5CB3E28,3E4A9E7DD06A,4705FA40E2AD,5047101BE2F8,54A9621FEFDE,58A74D2F801A,58B399BC9ED0,68ADB70D427F,856CC7D7A92E,8A89D9F4DCED,8CDF525175E4,904CCE5CF910,9294DB446A70,AE7B0E872931,B5456BC8D157,D8EFB145B2F4,DC60F9577584,E534F16CFBAE,F9046FBC3BEE&amp;label=Moved+in+June+2026"
+         title="June 2026: 20 bills moved">
+        <span class="ry-n" aria-hidden="true">20</span>
+        <span class="ry-bar" style="height:91%"></span>
+      </a>
+      <div class="ry-col quiet" title="July 2026: no bill moved">
+        <span class="ry-n" aria-hidden="true">0</span>
+        <span class="ry-bar" style="height:0%"></span>
+      </div>
+      <a class="ry-col" href="bills.html?ids=0D672CCE68DB,20A05505A7BF,4705FA40E2AD,4EBD4658D535,58B399BC9ED0,5E7A610FE37C,68ADB70D427F,8B46B127B1C6,904CCE5CF910,9294DB446A70,BCE5524683E9,C0B824E0E12B,D8EFB145B2F4,DC60F9577584,EC8081432936&amp;label=Moved+in+August+2026"
+         title="August 2026: 15 bills moved">
+        <span class="ry-n" aria-hidden="true">15</span>
+        <span class="ry-bar" style="height:68%"></span>
+      </a>
+      <a class="ry-col" href="bills.html?ids=23BFF5CB3E28,2B0C0207865B,3DFEE4FD58CE,5047101BE2F8,54A9621FEFDE,58A3A3A80E50,58B399BC9ED0,5E7A610FE37C,6CC3D0D1A08A,77192FE320A2,7ED85A227FE3,8B46B127B1C6,904CCE5CF910,93C01292D52B,A8819BB1EC34,B5456BC8D157,EC8081432936,F9046FBC3BEE&amp;label=Moved+in+September+2026"
+         title="September 2026: 18 bills moved">
+        <span class="ry-n" aria-hidden="true">18</span>
+        <span class="ry-bar" style="height:82%"></span>
+      </a>
+      <a class="ry-col so-far" href="bills.html?ids=B29B11A022BF&amp;label=Moved+in+October+2026"
+         title="October 2026 so far: 1 bill moved">
+        <span class="ry-n" aria-hidden="true">1</span>
+        <span class="ry-bar" style="height:5%"></span>
+      </a>
+    </div>
+    <div class="rhythm-axis">
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">May</span><span class="ry-i" aria-hidden="true">M</span><span class="ry-y">2025</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">Jun</span><span class="ry-i" aria-hidden="true">J</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">Jul</span><span class="ry-i" aria-hidden="true">J</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">Aug</span><span class="ry-i" aria-hidden="true">A</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">Sep</span><span class="ry-i" aria-hidden="true">S</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">Oct</span><span class="ry-i" aria-hidden="true">O</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">Nov</span><span class="ry-i" aria-hidden="true">N</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">Dec</span><span class="ry-i" aria-hidden="true">D</span></span>
+      <span class="ry-tick year-start"><span class="ry-m" aria-hidden="true">Jan</span><span class="ry-i" aria-hidden="true">J</span><span class="ry-y">2026</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">Feb</span><span class="ry-i" aria-hidden="true">F</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">Mar</span><span class="ry-i" aria-hidden="true">M</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">Apr</span><span class="ry-i" aria-hidden="true">A</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">May</span><span class="ry-i" aria-hidden="true">M</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">Jun</span><span class="ry-i" aria-hidden="true">J</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">Jul</span><span class="ry-i" aria-hidden="true">J</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">Aug</span><span class="ry-i" aria-hidden="true">A</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">Sep</span><span class="ry-i" aria-hidden="true">S</span></span>
+      <span class="ry-tick"><span class="ry-m" aria-hidden="true">Oct</span><span class="ry-i" aria-hidden="true">O</span></span>
+    </div>
+    <p class="fn-note">Busiest: February 2026, 22 bills moved. No bill moved in 4 months. October 2026 is still under way.</p>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-head">
+    <h2>Where bills are waiting</h2>
+    <span class="page-note">bills before Parliament, by the House they are in</span>
+  </div>
+  <div class="panel-body">
+    <div class="bh-rows">
+      <div class="bh-row">
+        <span class="bh-house house house-la">Legislative Assembly</span>
+        <span class="bh-figs">
+<a href="bills.html?ids=01A6C46AE09E,1F3F507DDAF7,20A05505A7BF,23BFF5CB3E28,2B0C0207865B,3DFEE4FD58CE,5047101BE2F8,54A9621FEFDE,58A3A3A80E50,5E7A610FE37C,77192FE320A2,7ED85A227FE3,990FA0DBB013,B29B11A022BF,B5456BC8D157,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Legislative+Assembly%3A+waiting"><b>18</b> waiting</a><a href="bills.html?ids=01A6C46AE09E,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Legislative+Assembly%3A+stalled+6+months%2B"><b>4</b> stalled 6 months+</a><a href="bills.html?ids=20A05505A7BF,5E7A610FE37C,E7702A7B1796&amp;label=Legislative+Assembly%3A+came+from+the+Council"><b>3</b> came from the Council</a><a href="bills.html?ids=1F3F507DDAF7,E7702A7B1796&amp;label=Legislative+Assembly%3A+private+members%27+bills"><b>2</b> private members&#39; bills</a>        </span>
+      </div>
+      <div class="bh-row">
+        <span class="bh-house house house-lc">Legislative Council</span>
+        <span class="bh-figs">
+<a href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4EBD4658D535,62656562B835,6A6BA20D4A1A,6CC3D0D1A08A,84A14E129830,887C1DC92E95,8A89D9F4DCED,8B46B127B1C6,8D33B74AEBE8,9294DB446A70,93C01292D52B,A8819BB1EC34,AE7B0E872931,C0B824E0E12B,D0CE95B2BE79,D8EFB145B2F4,EC8081432936,F9046FBC3BEE&amp;label=Legislative+Council%3A+waiting"><b>20</b> waiting</a><a href="bills.html?ids=3C3551B051CC,62656562B835,84A14E129830,887C1DC92E95,8D33B74AEBE8&amp;label=Legislative+Council%3A+stalled+6+months%2B"><b>5</b> stalled 6 months+</a><a href="bills.html?ids=3E4A9E7DD06A,4EBD4658D535,62656562B835,887C1DC92E95,8A89D9F4DCED,8B46B127B1C6,9294DB446A70,93C01292D52B,A8819BB1EC34,AE7B0E872931,C0B824E0E12B,D0CE95B2BE79,D8EFB145B2F4,EC8081432936&amp;label=Legislative+Council%3A+came+from+the+Assembly"><b>14</b> came from the Assembly</a><a href="bills.html?ids=3E4A9E7DD06A,6CC3D0D1A08A,D0CE95B2BE79,D8EFB145B2F4&amp;label=Legislative+Council%3A+private+members%27+bills"><b>4</b> private members&#39; bills</a>        </span>
+      </div>
+    </div>
+    <div class="bh-chart" role="img" aria-label="At the end of May 2025, the month this Parliament opened, the Council held 0 bills and the Assembly 0. Today the Council holds 20 and the Assembly 18.">
+      <svg viewBox="0 0 600 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <polyline class="bh-line bh-la" points="0.0,100.0 35.3,81.8 70.6,81.8 105.9,63.6 141.2,54.5 176.5,50.0 211.8,54.5 247.1,63.6 282.4,63.6 317.6,31.8 352.9,27.3 388.2,9.1 423.5,9.1 458.8,13.6 494.1,13.6 529.4,27.3 564.7,22.7 600.0,18.2" vector-effect="non-scaling-stroke"/>
+        <polyline class="bh-line bh-lc" points="0.0,100.0 35.3,90.9 70.6,90.9 105.9,77.3 141.2,68.2 176.5,68.2 211.8,50.0 247.1,27.3 282.4,27.3 317.6,18.2 352.9,13.6 388.2,13.6 423.5,0.0 458.8,0.0 494.1,0.0 529.4,9.1 564.7,9.1 600.0,9.1" vector-effect="non-scaling-stroke"/>
+      </svg>
+<a class="bh-dot bh-la" href="bills.html?ids=3E4A9E7DD06A,62656562B835,A8819BB1EC34,D0CE95B2BE79&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+June+2025" style="left:5.88%;top:81.82%" title="Legislative Assembly at the end of June 2025: 4 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=3E4A9E7DD06A,62656562B835,A8819BB1EC34,D0CE95B2BE79&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+July+2025" style="left:11.76%;top:81.82%" title="Legislative Assembly at the end of July 2025: 4 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=3E4A9E7DD06A,62656562B835,68ADB70D427F,904CCE5CF910,A8819BB1EC34,D0CE95B2BE79,D8EFB145B2F4,E534F16CFBAE&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+August+2025" style="left:17.65%;top:63.64%" title="Legislative Assembly at the end of August 2025: 8 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=3E4A9E7DD06A,68ADB70D427F,887C1DC92E95,904CCE5CF910,93C01292D52B,A8819BB1EC34,D0CE95B2BE79,D2C1E92E6F1A,D8EFB145B2F4,E534F16CFBAE&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+September+2025" style="left:23.53%;top:54.55%" title="Legislative Assembly at the end of September 2025: 10 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=3E4A9E7DD06A,68ADB70D427F,887C1DC92E95,904CCE5CF910,93C01292D52B,A8819BB1EC34,B2942A39F898,D0CE95B2BE79,D2C1E92E6F1A,D8EFB145B2F4,E534F16CFBAE&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+October+2025" style="left:29.41%;top:50.0%" title="Legislative Assembly at the end of October 2025: 11 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=3E4A9E7DD06A,68ADB70D427F,77192FE320A2,904CCE5CF910,93C01292D52B,A8819BB1EC34,B2942A39F898,D2C1E92E6F1A,D8EFB145B2F4,E534F16CFBAE&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+November+2025" style="left:35.29%;top:54.55%" title="Legislative Assembly at the end of November 2025: 10 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=01A6C46AE09E,68ADB70D427F,77192FE320A2,93C01292D52B,B2942A39F898,D2C1E92E6F1A,D8EFB145B2F4,E534F16CFBAE&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+December+2025" style="left:41.18%;top:63.64%" title="Legislative Assembly at the end of December 2025: 8 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=01A6C46AE09E,68ADB70D427F,77192FE320A2,93C01292D52B,B2942A39F898,D2C1E92E6F1A,D8EFB145B2F4,E534F16CFBAE&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+January+2026" style="left:47.06%;top:63.64%" title="Legislative Assembly at the end of January 2026: 8 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=01A6C46AE09E,20A05505A7BF,58A3A3A80E50,58B399BC9ED0,77192FE320A2,8A89D9F4DCED,9294DB446A70,93C01292D52B,990FA0DBB013,B2942A39F898,D2C1E92E6F1A,DC60F9577584,E534F16CFBAE,E7702A7B1796,EC8081432936&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+February+2026" style="left:52.94%;top:31.82%" title="Legislative Assembly at the end of February 2026: 15 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=01A6C46AE09E,20A05505A7BF,58A3A3A80E50,58B399BC9ED0,66B6099DA42C,77192FE320A2,856CC7D7A92E,8A89D9F4DCED,9294DB446A70,990FA0DBB013,C0B824E0E12B,D2C1E92E6F1A,DC60F9577584,E6641547E4E8,E7702A7B1796,EC8081432936&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+March+2026" style="left:58.82%;top:27.27%" title="Legislative Assembly at the end of March 2026: 16 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=01A6C46AE09E,0D672CCE68DB,1F3F507DDAF7,20A05505A7BF,2B0C0207865B,58A74D2F801A,58B399BC9ED0,5E7A610FE37C,66B6099DA42C,77192FE320A2,7ED85A227FE3,856CC7D7A92E,8A89D9F4DCED,9294DB446A70,990FA0DBB013,AE7B0E872931,C0B824E0E12B,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+April+2026" style="left:64.71%;top:9.09%" title="Legislative Assembly at the end of April 2026: 20 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=01A6C46AE09E,0D672CCE68DB,1F3F507DDAF7,20A05505A7BF,2B0C0207865B,5047101BE2F8,58A74D2F801A,5E7A610FE37C,77192FE320A2,7ED85A227FE3,856CC7D7A92E,8B46B127B1C6,9294DB446A70,990FA0DBB013,AE7B0E872931,B5456BC8D157,BCE5524683E9,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+May+2026" style="left:70.59%;top:9.09%" title="Legislative Assembly at the end of May 2026: 20 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=01A6C46AE09E,0D672CCE68DB,1F3F507DDAF7,20A05505A7BF,23BFF5CB3E28,2B0C0207865B,5047101BE2F8,54A9621FEFDE,5E7A610FE37C,77192FE320A2,7ED85A227FE3,8B46B127B1C6,9294DB446A70,990FA0DBB013,B5456BC8D157,BCE5524683E9,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+June+2026" style="left:76.47%;top:13.64%" title="Legislative Assembly at the end of June 2026: 19 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=01A6C46AE09E,0D672CCE68DB,1F3F507DDAF7,20A05505A7BF,23BFF5CB3E28,2B0C0207865B,5047101BE2F8,54A9621FEFDE,5E7A610FE37C,77192FE320A2,7ED85A227FE3,8B46B127B1C6,9294DB446A70,990FA0DBB013,B5456BC8D157,BCE5524683E9,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+July+2026" style="left:82.35%;top:13.64%" title="Legislative Assembly at the end of July 2026: 19 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=01A6C46AE09E,1F3F507DDAF7,20A05505A7BF,23BFF5CB3E28,2B0C0207865B,5047101BE2F8,54A9621FEFDE,5E7A610FE37C,77192FE320A2,7ED85A227FE3,8B46B127B1C6,990FA0DBB013,B5456BC8D157,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+August+2026" style="left:88.24%;top:27.27%" title="Legislative Assembly at the end of August 2026: 16 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=01A6C46AE09E,1F3F507DDAF7,20A05505A7BF,23BFF5CB3E28,2B0C0207865B,3DFEE4FD58CE,5047101BE2F8,54A9621FEFDE,58A3A3A80E50,5E7A610FE37C,77192FE320A2,7ED85A227FE3,990FA0DBB013,B5456BC8D157,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Waiting+in+the+Legislative+Assembly+at+the+end+of+September+2026" style="left:94.12%;top:22.73%" title="Legislative Assembly at the end of September 2026: 17 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-la" href="bills.html?ids=01A6C46AE09E,1F3F507DDAF7,20A05505A7BF,23BFF5CB3E28,2B0C0207865B,3DFEE4FD58CE,5047101BE2F8,54A9621FEFDE,58A3A3A80E50,5E7A610FE37C,77192FE320A2,7ED85A227FE3,990FA0DBB013,B29B11A022BF,B5456BC8D157,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Waiting+in+the+Legislative+Assembly+today" style="left:100.0%;top:18.18%" title="Legislative Assembly today: 18 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=3C3551B051CC,4EBD4658D535&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+June+2025" style="left:5.88%;top:90.91%" title="Legislative Council at the end of June 2025: 2 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=3C3551B051CC,4EBD4658D535&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+July+2025" style="left:11.76%;top:90.91%" title="Legislative Council at the end of July 2025: 2 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=20A05505A7BF,3C3551B051CC,4EBD4658D535,856CC7D7A92E,B2942A39F898&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+August+2025" style="left:17.65%;top:77.27%" title="Legislative Council at the end of August 2025: 5 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=20A05505A7BF,3C3551B051CC,4EBD4658D535,62656562B835,856CC7D7A92E,8D33B74AEBE8,B2942A39F898&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+September+2025" style="left:23.53%;top:68.18%" title="Legislative Council at the end of September 2025: 7 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=20A05505A7BF,3C3551B051CC,4EBD4658D535,62656562B835,856CC7D7A92E,8D33B74AEBE8,E7702A7B1796&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+October+2025" style="left:29.41%;top:68.18%" title="Legislative Council at the end of October 2025: 7 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=0D672CCE68DB,20A05505A7BF,3C3551B051CC,4EBD4658D535,62656562B835,84A14E129830,856CC7D7A92E,887C1DC92E95,8D33B74AEBE8,D0CE95B2BE79,E7702A7B1796&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+November+2025" style="left:35.29%;top:50.0%" title="Legislative Council at the end of November 2025: 11 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=0D672CCE68DB,20A05505A7BF,3C3551B051CC,3E4A9E7DD06A,4EBD4658D535,5E7A610FE37C,62656562B835,84A14E129830,856CC7D7A92E,887C1DC92E95,8CDF525175E4,8D33B74AEBE8,904CCE5CF910,A8819BB1EC34,D0CE95B2BE79,E7702A7B1796&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+December+2025" style="left:41.18%;top:27.27%" title="Legislative Council at the end of December 2025: 16 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=0D672CCE68DB,20A05505A7BF,3C3551B051CC,3E4A9E7DD06A,4EBD4658D535,5E7A610FE37C,62656562B835,84A14E129830,856CC7D7A92E,887C1DC92E95,8CDF525175E4,8D33B74AEBE8,904CCE5CF910,A8819BB1EC34,D0CE95B2BE79,E7702A7B1796&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+January+2026" style="left:47.06%;top:27.27%" title="Legislative Council at the end of January 2026: 16 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=0D672CCE68DB,3C3551B051CC,3E4A9E7DD06A,4705FA40E2AD,4EBD4658D535,5E7A610FE37C,62656562B835,68ADB70D427F,6A6BA20D4A1A,84A14E129830,856CC7D7A92E,887C1DC92E95,8CDF525175E4,8D33B74AEBE8,904CCE5CF910,A8819BB1EC34,D0CE95B2BE79,D8EFB145B2F4&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+February+2026" style="left:52.94%;top:18.18%" title="Legislative Council at the end of February 2026: 18 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=0D672CCE68DB,3C3551B051CC,3E4A9E7DD06A,4705FA40E2AD,4EBD4658D535,5E7A610FE37C,62656562B835,68ADB70D427F,6A6BA20D4A1A,84A14E129830,887C1DC92E95,8CDF525175E4,8D33B74AEBE8,904CCE5CF910,93C01292D52B,A8819BB1EC34,D0CE95B2BE79,D8EFB145B2F4,E534F16CFBAE&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+March+2026" style="left:58.82%;top:13.64%" title="Legislative Council at the end of March 2026: 19 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4705FA40E2AD,4EBD4658D535,62656562B835,68ADB70D427F,6A6BA20D4A1A,84A14E129830,887C1DC92E95,8CDF525175E4,8D33B74AEBE8,904CCE5CF910,93C01292D52B,A8819BB1EC34,D0CE95B2BE79,D8EFB145B2F4,DC60F9577584,E534F16CFBAE,EC8081432936&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+April+2026" style="left:64.71%;top:13.64%" title="Legislative Council at the end of April 2026: 19 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4705FA40E2AD,4EBD4658D535,58B399BC9ED0,62656562B835,68ADB70D427F,6A6BA20D4A1A,84A14E129830,887C1DC92E95,8A89D9F4DCED,8CDF525175E4,8D33B74AEBE8,904CCE5CF910,93C01292D52B,A8819BB1EC34,C0B824E0E12B,D0CE95B2BE79,D8EFB145B2F4,DC60F9577584,E534F16CFBAE,EC8081432936&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+May+2026" style="left:70.59%;top:0.0%" title="Legislative Council at the end of May 2026: 22 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4705FA40E2AD,4EBD4658D535,58B399BC9ED0,62656562B835,68ADB70D427F,6A6BA20D4A1A,84A14E129830,887C1DC92E95,8A89D9F4DCED,8D33B74AEBE8,904CCE5CF910,93C01292D52B,A8819BB1EC34,AE7B0E872931,C0B824E0E12B,D0CE95B2BE79,D8EFB145B2F4,DC60F9577584,EC8081432936,F9046FBC3BEE&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+June+2026" style="left:76.47%;top:0.0%" title="Legislative Council at the end of June 2026: 22 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4705FA40E2AD,4EBD4658D535,58B399BC9ED0,62656562B835,68ADB70D427F,6A6BA20D4A1A,84A14E129830,887C1DC92E95,8A89D9F4DCED,8D33B74AEBE8,904CCE5CF910,93C01292D52B,A8819BB1EC34,AE7B0E872931,C0B824E0E12B,D0CE95B2BE79,D8EFB145B2F4,DC60F9577584,EC8081432936,F9046FBC3BEE&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+July+2026" style="left:82.35%;top:0.0%" title="Legislative Council at the end of July 2026: 22 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4EBD4658D535,58B399BC9ED0,62656562B835,6A6BA20D4A1A,84A14E129830,887C1DC92E95,8A89D9F4DCED,8D33B74AEBE8,904CCE5CF910,9294DB446A70,93C01292D52B,A8819BB1EC34,AE7B0E872931,C0B824E0E12B,D0CE95B2BE79,D8EFB145B2F4,EC8081432936,F9046FBC3BEE&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+August+2026" style="left:88.24%;top:9.09%" title="Legislative Council at the end of August 2026: 20 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4EBD4658D535,62656562B835,6A6BA20D4A1A,6CC3D0D1A08A,84A14E129830,887C1DC92E95,8A89D9F4DCED,8B46B127B1C6,8D33B74AEBE8,9294DB446A70,93C01292D52B,A8819BB1EC34,AE7B0E872931,C0B824E0E12B,D0CE95B2BE79,D8EFB145B2F4,EC8081432936,F9046FBC3BEE&amp;label=Waiting+in+the+Legislative+Council+at+the+end+of+September+2026" style="left:94.12%;top:9.09%" title="Legislative Council at the end of September 2026: 20 bills waiting" tabindex="-1" aria-hidden="true"></a><a class="bh-dot bh-lc" href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4EBD4658D535,62656562B835,6A6BA20D4A1A,6CC3D0D1A08A,84A14E129830,887C1DC92E95,8A89D9F4DCED,8B46B127B1C6,8D33B74AEBE8,9294DB446A70,93C01292D52B,A8819BB1EC34,AE7B0E872931,C0B824E0E12B,D0CE95B2BE79,D8EFB145B2F4,EC8081432936,F9046FBC3BEE&amp;label=Waiting+in+the+Legislative+Council+today" style="left:100.0%;top:9.09%" title="Legislative Council today: 20 bills waiting" tabindex="-1" aria-hidden="true"></a>      <div class="bh-ends" aria-hidden="true">
+<span class="bh-end bh-la" style="top:25.1%">Assembly 18</span><span class="bh-end bh-lc" style="top:9.1%">Council 20</span>      </div>
+    </div>
+    <div class="bh-axis" aria-hidden="true"><span>May 2025</span><span>Now</span></div>
+    <p class="fn-note">At the end of May 2025, the month this Parliament opened, the Council held 0 bills and the Assembly 0. Today the Council holds 20 and the Assembly 18.</p>
+    <details class="bh-table">
+      <summary>Month by month</summary>
+      <table class="bh-months">
+        <thead>
+          <tr class="bh-groups"><td></td><th scope="colgroup" colspan="2" class="bh-g bh-la">Assembly</th><th scope="colgroup" colspan="2" class="bh-g bh-lc">Council</th></tr>
+          <tr><th scope="col">Month end</th><th scope="col">Waiting</th><th scope="col">Stalled</th><th scope="col">Waiting</th><th scope="col">Stalled</th></tr>
+        </thead>
+        <tbody>
+          <tr class=""><th scope="row">May 2025</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:0.0%"></span></span><span class="bh-nil">0</span></td><td class="bh-stalled bh-la"><span class="bh-nil">0</span></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:0.0%"></span></span><span class="bh-nil">0</span></td><td class="bh-stalled bh-lc"><span class="bh-nil">0</span></td></tr>
+          <tr class=""><th scope="row">Jun 2025</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:18.2%"></span></span><a href="bills.html?ids=3E4A9E7DD06A,62656562B835,A8819BB1EC34,D0CE95B2BE79&amp;label=Legislative+Assembly%2C+end+of+June+2025">4</a></td><td class="bh-stalled bh-la"><span class="bh-nil">0</span></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:9.1%"></span></span><a href="bills.html?ids=3C3551B051CC,4EBD4658D535&amp;label=Legislative+Council%2C+end+of+June+2025">2</a></td><td class="bh-stalled bh-lc"><span class="bh-nil">0</span></td></tr>
+          <tr class=""><th scope="row">Jul 2025</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:18.2%"></span></span><a href="bills.html?ids=3E4A9E7DD06A,62656562B835,A8819BB1EC34,D0CE95B2BE79&amp;label=Legislative+Assembly%2C+end+of+July+2025">4</a></td><td class="bh-stalled bh-la"><span class="bh-nil">0</span></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:9.1%"></span></span><a href="bills.html?ids=3C3551B051CC,4EBD4658D535&amp;label=Legislative+Council%2C+end+of+July+2025">2</a></td><td class="bh-stalled bh-lc"><span class="bh-nil">0</span></td></tr>
+          <tr class=""><th scope="row">Aug 2025</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:36.4%"></span></span><a href="bills.html?ids=3E4A9E7DD06A,62656562B835,68ADB70D427F,904CCE5CF910,A8819BB1EC34,D0CE95B2BE79,D8EFB145B2F4,E534F16CFBAE&amp;label=Legislative+Assembly%2C+end+of+August+2025">8</a></td><td class="bh-stalled bh-la"><span class="bh-nil">0</span></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:22.7%"></span></span><a href="bills.html?ids=20A05505A7BF,3C3551B051CC,4EBD4658D535,856CC7D7A92E,B2942A39F898&amp;label=Legislative+Council%2C+end+of+August+2025">5</a></td><td class="bh-stalled bh-lc"><span class="bh-nil">0</span></td></tr>
+          <tr class=""><th scope="row">Sep 2025</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:45.5%"></span></span><a href="bills.html?ids=3E4A9E7DD06A,68ADB70D427F,887C1DC92E95,904CCE5CF910,93C01292D52B,A8819BB1EC34,D0CE95B2BE79,D2C1E92E6F1A,D8EFB145B2F4,E534F16CFBAE&amp;label=Legislative+Assembly%2C+end+of+September+2025">10</a></td><td class="bh-stalled bh-la"><span class="bh-nil">0</span></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:31.8%"></span></span><a href="bills.html?ids=20A05505A7BF,3C3551B051CC,4EBD4658D535,62656562B835,856CC7D7A92E,8D33B74AEBE8,B2942A39F898&amp;label=Legislative+Council%2C+end+of+September+2025">7</a></td><td class="bh-stalled bh-lc"><span class="bh-nil">0</span></td></tr>
+          <tr class=""><th scope="row">Oct 2025</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:50.0%"></span></span><a href="bills.html?ids=3E4A9E7DD06A,68ADB70D427F,887C1DC92E95,904CCE5CF910,93C01292D52B,A8819BB1EC34,B2942A39F898,D0CE95B2BE79,D2C1E92E6F1A,D8EFB145B2F4,E534F16CFBAE&amp;label=Legislative+Assembly%2C+end+of+October+2025">11</a></td><td class="bh-stalled bh-la"><span class="bh-nil">0</span></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:31.8%"></span></span><a href="bills.html?ids=20A05505A7BF,3C3551B051CC,4EBD4658D535,62656562B835,856CC7D7A92E,8D33B74AEBE8,E7702A7B1796&amp;label=Legislative+Council%2C+end+of+October+2025">7</a></td><td class="bh-stalled bh-lc"><span class="bh-nil">0</span></td></tr>
+          <tr class=""><th scope="row">Nov 2025</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:45.5%"></span></span><a href="bills.html?ids=3E4A9E7DD06A,68ADB70D427F,77192FE320A2,904CCE5CF910,93C01292D52B,A8819BB1EC34,B2942A39F898,D2C1E92E6F1A,D8EFB145B2F4,E534F16CFBAE&amp;label=Legislative+Assembly%2C+end+of+November+2025">10</a></td><td class="bh-stalled bh-la"><span class="bh-nil">0</span></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:50.0%"></span></span><a href="bills.html?ids=0D672CCE68DB,20A05505A7BF,3C3551B051CC,4EBD4658D535,62656562B835,84A14E129830,856CC7D7A92E,887C1DC92E95,8D33B74AEBE8,D0CE95B2BE79,E7702A7B1796&amp;label=Legislative+Council%2C+end+of+November+2025">11</a></td><td class="bh-stalled bh-lc"><span class="bh-nil">0</span></td></tr>
+          <tr class=""><th scope="row">Dec 2025</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:36.4%"></span></span><a href="bills.html?ids=01A6C46AE09E,68ADB70D427F,77192FE320A2,93C01292D52B,B2942A39F898,D2C1E92E6F1A,D8EFB145B2F4,E534F16CFBAE&amp;label=Legislative+Assembly%2C+end+of+December+2025">8</a></td><td class="bh-stalled bh-la"><span class="bh-nil">0</span></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:72.7%"></span></span><a href="bills.html?ids=0D672CCE68DB,20A05505A7BF,3C3551B051CC,3E4A9E7DD06A,4EBD4658D535,5E7A610FE37C,62656562B835,84A14E129830,856CC7D7A92E,887C1DC92E95,8CDF525175E4,8D33B74AEBE8,904CCE5CF910,A8819BB1EC34,D0CE95B2BE79,E7702A7B1796&amp;label=Legislative+Council%2C+end+of+December+2025">16</a></td><td class="bh-stalled bh-lc"><a href="bills.html?ids=4EBD4658D535&amp;label=Legislative+Council%2C+stalled%2C+end+of+December+2025">1</a></td></tr>
+          <tr class=" bh-year"><th scope="row">Jan 2026</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:36.4%"></span></span><a href="bills.html?ids=01A6C46AE09E,68ADB70D427F,77192FE320A2,93C01292D52B,B2942A39F898,D2C1E92E6F1A,D8EFB145B2F4,E534F16CFBAE&amp;label=Legislative+Assembly%2C+end+of+January+2026">8</a></td><td class="bh-stalled bh-la"><span class="bh-nil">0</span></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:72.7%"></span></span><a href="bills.html?ids=0D672CCE68DB,20A05505A7BF,3C3551B051CC,3E4A9E7DD06A,4EBD4658D535,5E7A610FE37C,62656562B835,84A14E129830,856CC7D7A92E,887C1DC92E95,8CDF525175E4,8D33B74AEBE8,904CCE5CF910,A8819BB1EC34,D0CE95B2BE79,E7702A7B1796&amp;label=Legislative+Council%2C+end+of+January+2026">16</a></td><td class="bh-stalled bh-lc"><a href="bills.html?ids=4EBD4658D535&amp;label=Legislative+Council%2C+stalled%2C+end+of+January+2026">1</a></td></tr>
+          <tr class=""><th scope="row">Feb 2026</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:68.2%"></span></span><a href="bills.html?ids=01A6C46AE09E,20A05505A7BF,58A3A3A80E50,58B399BC9ED0,77192FE320A2,8A89D9F4DCED,9294DB446A70,93C01292D52B,990FA0DBB013,B2942A39F898,D2C1E92E6F1A,DC60F9577584,E534F16CFBAE,E7702A7B1796,EC8081432936&amp;label=Legislative+Assembly%2C+end+of+February+2026">15</a></td><td class="bh-stalled bh-la"><span class="bh-nil">0</span></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:81.8%"></span></span><a href="bills.html?ids=0D672CCE68DB,3C3551B051CC,3E4A9E7DD06A,4705FA40E2AD,4EBD4658D535,5E7A610FE37C,62656562B835,68ADB70D427F,6A6BA20D4A1A,84A14E129830,856CC7D7A92E,887C1DC92E95,8CDF525175E4,8D33B74AEBE8,904CCE5CF910,A8819BB1EC34,D0CE95B2BE79,D8EFB145B2F4&amp;label=Legislative+Council%2C+end+of+February+2026">18</a></td><td class="bh-stalled bh-lc"><a href="bills.html?ids=3C3551B051CC,4EBD4658D535&amp;label=Legislative+Council%2C+stalled%2C+end+of+February+2026">2</a></td></tr>
+          <tr class=""><th scope="row">Mar 2026</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:72.7%"></span></span><a href="bills.html?ids=01A6C46AE09E,20A05505A7BF,58A3A3A80E50,58B399BC9ED0,66B6099DA42C,77192FE320A2,856CC7D7A92E,8A89D9F4DCED,9294DB446A70,990FA0DBB013,C0B824E0E12B,D2C1E92E6F1A,DC60F9577584,E6641547E4E8,E7702A7B1796,EC8081432936&amp;label=Legislative+Assembly%2C+end+of+March+2026">16</a></td><td class="bh-stalled bh-la"><span class="bh-nil">0</span></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:86.4%"></span></span><a href="bills.html?ids=0D672CCE68DB,3C3551B051CC,3E4A9E7DD06A,4705FA40E2AD,4EBD4658D535,5E7A610FE37C,62656562B835,68ADB70D427F,6A6BA20D4A1A,84A14E129830,887C1DC92E95,8CDF525175E4,8D33B74AEBE8,904CCE5CF910,93C01292D52B,A8819BB1EC34,D0CE95B2BE79,D8EFB145B2F4,E534F16CFBAE&amp;label=Legislative+Council%2C+end+of+March+2026">19</a></td><td class="bh-stalled bh-lc"><a href="bills.html?ids=3C3551B051CC,4EBD4658D535,62656562B835&amp;label=Legislative+Council%2C+stalled%2C+end+of+March+2026">3</a></td></tr>
+          <tr class=""><th scope="row">Apr 2026</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:90.9%"></span></span><a href="bills.html?ids=01A6C46AE09E,0D672CCE68DB,1F3F507DDAF7,20A05505A7BF,2B0C0207865B,58A74D2F801A,58B399BC9ED0,5E7A610FE37C,66B6099DA42C,77192FE320A2,7ED85A227FE3,856CC7D7A92E,8A89D9F4DCED,9294DB446A70,990FA0DBB013,AE7B0E872931,C0B824E0E12B,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Legislative+Assembly%2C+end+of+April+2026">20</a></td><td class="bh-stalled bh-la"><span class="bh-nil">0</span></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:86.4%"></span></span><a href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4705FA40E2AD,4EBD4658D535,62656562B835,68ADB70D427F,6A6BA20D4A1A,84A14E129830,887C1DC92E95,8CDF525175E4,8D33B74AEBE8,904CCE5CF910,93C01292D52B,A8819BB1EC34,D0CE95B2BE79,D8EFB145B2F4,DC60F9577584,E534F16CFBAE,EC8081432936&amp;label=Legislative+Council%2C+end+of+April+2026">19</a></td><td class="bh-stalled bh-lc"><a href="bills.html?ids=3C3551B051CC,4EBD4658D535,62656562B835&amp;label=Legislative+Council%2C+stalled%2C+end+of+April+2026">3</a></td></tr>
+          <tr class=""><th scope="row">May 2026</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:90.9%"></span></span><a href="bills.html?ids=01A6C46AE09E,0D672CCE68DB,1F3F507DDAF7,20A05505A7BF,2B0C0207865B,5047101BE2F8,58A74D2F801A,5E7A610FE37C,77192FE320A2,7ED85A227FE3,856CC7D7A92E,8B46B127B1C6,9294DB446A70,990FA0DBB013,AE7B0E872931,B5456BC8D157,BCE5524683E9,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Legislative+Assembly%2C+end+of+May+2026">20</a></td><td class="bh-stalled bh-la"><span class="bh-nil">0</span></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:100.0%"></span></span><a href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4705FA40E2AD,4EBD4658D535,58B399BC9ED0,62656562B835,68ADB70D427F,6A6BA20D4A1A,84A14E129830,887C1DC92E95,8A89D9F4DCED,8CDF525175E4,8D33B74AEBE8,904CCE5CF910,93C01292D52B,A8819BB1EC34,C0B824E0E12B,D0CE95B2BE79,D8EFB145B2F4,DC60F9577584,E534F16CFBAE,EC8081432936&amp;label=Legislative+Council%2C+end+of+May+2026">22</a></td><td class="bh-stalled bh-lc"><a href="bills.html?ids=3C3551B051CC,4EBD4658D535,62656562B835,887C1DC92E95&amp;label=Legislative+Council%2C+stalled%2C+end+of+May+2026">4</a></td></tr>
+          <tr class=""><th scope="row">Jun 2026</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:86.4%"></span></span><a href="bills.html?ids=01A6C46AE09E,0D672CCE68DB,1F3F507DDAF7,20A05505A7BF,23BFF5CB3E28,2B0C0207865B,5047101BE2F8,54A9621FEFDE,5E7A610FE37C,77192FE320A2,7ED85A227FE3,8B46B127B1C6,9294DB446A70,990FA0DBB013,B5456BC8D157,BCE5524683E9,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Legislative+Assembly%2C+end+of+June+2026">19</a></td><td class="bh-stalled bh-la"><a href="bills.html?ids=01A6C46AE09E,77192FE320A2&amp;label=Legislative+Assembly%2C+stalled%2C+end+of+June+2026">2</a></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:100.0%"></span></span><a href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4705FA40E2AD,4EBD4658D535,58B399BC9ED0,62656562B835,68ADB70D427F,6A6BA20D4A1A,84A14E129830,887C1DC92E95,8A89D9F4DCED,8D33B74AEBE8,904CCE5CF910,93C01292D52B,A8819BB1EC34,AE7B0E872931,C0B824E0E12B,D0CE95B2BE79,D8EFB145B2F4,DC60F9577584,EC8081432936,F9046FBC3BEE&amp;label=Legislative+Council%2C+end+of+June+2026">22</a></td><td class="bh-stalled bh-lc"><a href="bills.html?ids=3C3551B051CC,4EBD4658D535,62656562B835,887C1DC92E95&amp;label=Legislative+Council%2C+stalled%2C+end+of+June+2026">4</a></td></tr>
+          <tr class=""><th scope="row">Jul 2026</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:86.4%"></span></span><a href="bills.html?ids=01A6C46AE09E,0D672CCE68DB,1F3F507DDAF7,20A05505A7BF,23BFF5CB3E28,2B0C0207865B,5047101BE2F8,54A9621FEFDE,5E7A610FE37C,77192FE320A2,7ED85A227FE3,8B46B127B1C6,9294DB446A70,990FA0DBB013,B5456BC8D157,BCE5524683E9,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Legislative+Assembly%2C+end+of+July+2026">19</a></td><td class="bh-stalled bh-la"><a href="bills.html?ids=01A6C46AE09E,77192FE320A2&amp;label=Legislative+Assembly%2C+stalled%2C+end+of+July+2026">2</a></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:100.0%"></span></span><a href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4705FA40E2AD,4EBD4658D535,58B399BC9ED0,62656562B835,68ADB70D427F,6A6BA20D4A1A,84A14E129830,887C1DC92E95,8A89D9F4DCED,8D33B74AEBE8,904CCE5CF910,93C01292D52B,A8819BB1EC34,AE7B0E872931,C0B824E0E12B,D0CE95B2BE79,D8EFB145B2F4,DC60F9577584,EC8081432936,F9046FBC3BEE&amp;label=Legislative+Council%2C+end+of+July+2026">22</a></td><td class="bh-stalled bh-lc"><a href="bills.html?ids=3C3551B051CC,4EBD4658D535,62656562B835,887C1DC92E95&amp;label=Legislative+Council%2C+stalled%2C+end+of+July+2026">4</a></td></tr>
+          <tr class=""><th scope="row">Aug 2026</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:72.7%"></span></span><a href="bills.html?ids=01A6C46AE09E,1F3F507DDAF7,20A05505A7BF,23BFF5CB3E28,2B0C0207865B,5047101BE2F8,54A9621FEFDE,5E7A610FE37C,77192FE320A2,7ED85A227FE3,8B46B127B1C6,990FA0DBB013,B5456BC8D157,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Legislative+Assembly%2C+end+of+August+2026">16</a></td><td class="bh-stalled bh-la"><a href="bills.html?ids=01A6C46AE09E,77192FE320A2,D2C1E92E6F1A,E7702A7B1796&amp;label=Legislative+Assembly%2C+stalled%2C+end+of+August+2026">4</a></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:90.9%"></span></span><a href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4EBD4658D535,58B399BC9ED0,62656562B835,6A6BA20D4A1A,84A14E129830,887C1DC92E95,8A89D9F4DCED,8D33B74AEBE8,904CCE5CF910,9294DB446A70,93C01292D52B,A8819BB1EC34,AE7B0E872931,C0B824E0E12B,D0CE95B2BE79,D8EFB145B2F4,EC8081432936,F9046FBC3BEE&amp;label=Legislative+Council%2C+end+of+August+2026">20</a></td><td class="bh-stalled bh-lc"><a href="bills.html?ids=3C3551B051CC,62656562B835,84A14E129830,887C1DC92E95,8D33B74AEBE8&amp;label=Legislative+Council%2C+stalled%2C+end+of+August+2026">5</a></td></tr>
+          <tr class=""><th scope="row">Sep 2026</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:77.3%"></span></span><a href="bills.html?ids=01A6C46AE09E,1F3F507DDAF7,20A05505A7BF,23BFF5CB3E28,2B0C0207865B,3DFEE4FD58CE,5047101BE2F8,54A9621FEFDE,58A3A3A80E50,5E7A610FE37C,77192FE320A2,7ED85A227FE3,990FA0DBB013,B5456BC8D157,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Legislative+Assembly%2C+end+of+September+2026">17</a></td><td class="bh-stalled bh-la"><a href="bills.html?ids=01A6C46AE09E,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Legislative+Assembly%2C+stalled%2C+end+of+September+2026">4</a></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:90.9%"></span></span><a href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4EBD4658D535,62656562B835,6A6BA20D4A1A,6CC3D0D1A08A,84A14E129830,887C1DC92E95,8A89D9F4DCED,8B46B127B1C6,8D33B74AEBE8,9294DB446A70,93C01292D52B,A8819BB1EC34,AE7B0E872931,C0B824E0E12B,D0CE95B2BE79,D8EFB145B2F4,EC8081432936,F9046FBC3BEE&amp;label=Legislative+Council%2C+end+of+September+2026">20</a></td><td class="bh-stalled bh-lc"><a href="bills.html?ids=3C3551B051CC,62656562B835,84A14E129830,887C1DC92E95,8D33B74AEBE8&amp;label=Legislative+Council%2C+stalled%2C+end+of+September+2026">5</a></td></tr>
+          <tr class="bh-now"><th scope="row">Now</th><td class="bh-waiting bh-la"><span class="bh-mini" aria-hidden="true"><span style="width:81.8%"></span></span><a href="bills.html?ids=01A6C46AE09E,1F3F507DDAF7,20A05505A7BF,23BFF5CB3E28,2B0C0207865B,3DFEE4FD58CE,5047101BE2F8,54A9621FEFDE,58A3A3A80E50,5E7A610FE37C,77192FE320A2,7ED85A227FE3,990FA0DBB013,B29B11A022BF,B5456BC8D157,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Legislative+Assembly%2C+today">18</a></td><td class="bh-stalled bh-la"><a href="bills.html?ids=01A6C46AE09E,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Legislative+Assembly%2C+stalled%2C+today">4</a></td><td class="bh-waiting bh-lc"><span class="bh-mini" aria-hidden="true"><span style="width:90.9%"></span></span><a href="bills.html?ids=3C3551B051CC,3E4A9E7DD06A,4EBD4658D535,62656562B835,6A6BA20D4A1A,6CC3D0D1A08A,84A14E129830,887C1DC92E95,8A89D9F4DCED,8B46B127B1C6,8D33B74AEBE8,9294DB446A70,93C01292D52B,A8819BB1EC34,AE7B0E872931,C0B824E0E12B,D0CE95B2BE79,D8EFB145B2F4,EC8081432936,F9046FBC3BEE&amp;label=Legislative+Council%2C+today">20</a></td><td class="bh-stalled bh-lc"><a href="bills.html?ids=3C3551B051CC,62656562B835,84A14E129830,887C1DC92E95,8D33B74AEBE8&amp;label=Legislative+Council%2C+stalled%2C+today">5</a></td></tr>
+        </tbody>
+      </table>
+    </details>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-head">
+    <h2>How long bills have been standing still</h2>
+    <span class="page-note">38 still before Parliament</span>
+  </div>
+  <div class="panel-body">
+    <div class="funnel">
+      <a class="fn-row wide" href="bills.html?ids=1F3F507DDAF7,20A05505A7BF,23BFF5CB3E28,2B0C0207865B,3DFEE4FD58CE,4EBD4658D535,5047101BE2F8,54A9621FEFDE,58A3A3A80E50,5E7A610FE37C,6CC3D0D1A08A,77192FE320A2,7ED85A227FE3,8A89D9F4DCED,8B46B127B1C6,9294DB446A70,93C01292D52B,A8819BB1EC34,B29B11A022BF,B5456BC8D157,C0B824E0E12B,D8EFB145B2F4,EC8081432936,F9046FBC3BEE&amp;label=Standing+still%3A+under+3+months">
+        <span class="fn-label">Under 3 months</span>
+        <span class="fn-track"><span class="fn-bar" style="width:63.2%"></span></span>
+        <span class="fn-n">24</span>
+      </a>
+      <a class="fn-row" href="bills.html?ids=3E4A9E7DD06A,6A6BA20D4A1A,990FA0DBB013,AE7B0E872931,D0CE95B2BE79&amp;label=Standing+still%3A+3+to+6+months">
+        <span class="fn-label">3 to 6 months</span>
+        <span class="fn-track"><span class="fn-bar" style="width:13.2%"></span></span>
+        <span class="fn-n">5</span>
+      </a>
+      <a class="fn-row" href="bills.html?ids=01A6C46AE09E,84A14E129830,887C1DC92E95,8D33B74AEBE8,D2C1E92E6F1A,E6641547E4E8,E7702A7B1796&amp;label=Standing+still%3A+6+to+12+months">
+        <span class="fn-label">6 to 12 months</span>
+        <span class="fn-track"><span class="fn-bar" style="width:18.4%"></span></span>
+        <span class="fn-n">7</span>
+      </a>
+      <a class="fn-row" href="bills.html?ids=3C3551B051CC,62656562B835&amp;label=Standing+still%3A+over+a+year">
+        <span class="fn-label">Over a year</span>
+        <span class="fn-track"><span class="fn-bar" style="width:5.3%"></span></span>
+        <span class="fn-n">2</span>
+      </a>
+    </div>
+    <p class="fn-note">Counted from the day each bill last moved; the longest has stood
+      406 days. Standing still is not the same as failing:
+      Parliament may return to any of these.</p>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-head"><h2>Waiting longest</h2><span class="page-note">still before Parliament</span></div>
+  <div class="panel-body">
+    <div class="waits">
+      <a class="wt-row" href="bills/3C3551B051CC.html">
+        <span class="wt-title">Bill AM (Orchard) Amendment Bill 2025</span>
+        <span class="wt-track"><span class="wt-bar" style="width:100%"></span></span>
+        <span class="wt-n">406 days</span>
+        <span class="wt-meta">Legislative Council · Second Reading Speech · last moved Thu 21 Aug 2025</span>
+      </a>
+      <a class="wt-row" href="bills/62656562B835.html">
+        <span class="wt-title">Bill AI (Willow) Amendment Bill 2025</span>
+        <span class="wt-track"><span class="wt-bar" style="width:92%"></span></span>
+        <span class="wt-n">375 days</span>
+        <span class="wt-meta">Legislative Council · Second Reading Speech · last moved Sun 21 Sep 2025</span>
+      </a>
+      <a class="wt-row" href="bills/887C1DC92E95.html">
+        <span class="wt-title">Bill AV (Copper) Bill 2025</span>
+        <span class="wt-track"><span class="wt-bar" style="width:82%"></span></span>
+        <span class="wt-n">331 days</span>
+        <span class="wt-meta">Legislative Council · First Reading · last moved Tue 4 Nov 2025</span>
+      </a>
+      <a class="wt-row" href="bills/01A6C46AE09E.html">
+        <span class="wt-title">Bill BD (Orchard) Bill 2025</span>
+        <span class="wt-track"><span class="wt-bar" style="width:74%"></span></span>
+        <span class="wt-n">301 days</span>
+        <span class="wt-meta">Legislative Assembly · Second Reading Speech · last moved Thu 4 Dec 2025</span>
+      </a>
+      <a class="wt-row" href="bills/D2C1E92E6F1A.html">
+        <span class="wt-title">Bill AU (Meadow) Amendment Bill 2025</span>
+        <span class="wt-track"><span class="wt-bar" style="width:59%"></span></span>
+        <span class="wt-n">240 days</span>
+        <span class="wt-meta">Legislative Assembly · Consideration in Detail · last moved Tue 3 Feb 2026</span>
+      </a>
+      <a class="wt-row" href="bills/E7702A7B1796.html">
+        <span class="wt-title">Bill AY (Lantern) Amendment Bill 2025</span>
+        <span class="wt-track"><span class="wt-bar" style="width:59%"></span></span>
+        <span class="wt-n">240 days</span>
+        <span class="wt-meta">Legislative Assembly · First Reading · last moved Tue 3 Feb 2026</span>
+      </a>
+      <a class="wt-row" href="bills/84A14E129830.html">
+        <span class="wt-title">Bill AZ (Willow) Bill 2025</span>
+        <span class="wt-track"><span class="wt-bar" style="width:54%"></span></span>
+        <span class="wt-n">219 days</span>
+        <span class="wt-meta">Legislative Council · Second Reading Agreed · last moved Tue 24 Feb 2026</span>
+      </a>
+      <a class="wt-row" href="bills/8D33B74AEBE8.html">
+        <span class="wt-title">Bill AW (Falcon) Amendment Bill 2025</span>
+        <span class="wt-track"><span class="wt-bar" style="width:52%"></span></span>
+        <span class="wt-n">212 days</span>
+        <span class="wt-meta">Legislative Council · Third Reading · last moved Tue 3 Mar 2026</span>
+      </a>
+      <a class="wt-row" href="bills/E6641547E4E8.html">
+        <span class="wt-title">Bill BQ (River) Amendment Bill 2026</span>
+        <span class="wt-track"><span class="wt-bar" style="width:47%"></span></span>
+        <span class="wt-n">190 days</span>
+        <span class="wt-meta">Legislative Assembly · Second Reading Speech · last moved Wed 25 Mar 2026</span>
+      </a>
+      <a class="wt-row" href="bills/6A6BA20D4A1A.html">
+        <span class="wt-title">Bill BK (River) Amendment Bill 2026</span>
+        <span class="wt-track"><span class="wt-bar" style="width:43%"></span></span>
+        <span class="wt-n">175 days</span>
+        <span class="wt-meta">Legislative Council · Committee of the Whole · last moved Thu 9 Apr 2026</span>
+      </a>
+    </div>
+    <p class="fn-note">Days since each bill last moved at all. A long wait is not
+    the same as a bill that has failed: Parliament may return to any of these.</p>
+  </div>
+</div>
+</main>
+
+<footer class="site-foot">
+  <span>All bills, members, votes and text on this site are fictional.</span>
+  <button type="button" class="linkish" data-reset title="Forget everything this demo saved in your browser">Reset demo</button>
+</footer>
+<script src="static/demo.js?v=549cc8dd85"></script>
+</body>
+</html>

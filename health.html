@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>System health · Legislation Tracker demo</title>
+<meta name="description" content="A demo of a legislation tracker dashboard, built as a UWA Industrial Project. All data is fictional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="static/app.css?v=549cc8dd85">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="demo-banner" role="note">
+  <b>Demo with fictional data</b> <span class="sep">·</span> UWA Industrial Project
+  <span class="when"><span class="sep">·</span> Demo date: 1 October 2026</span>
+</div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="index.html">
+      <span class="wordmark">Legislation Tracker</span>
+      <span class="demo-tag">DEMO</span>
+    </a>
+    <nav class="primary" aria-label="Sections">
+      <a href="index.html" >Feed</a>
+      <a href="bills.html" >Bills</a>
+      <a href="trends.html" >Trends</a>
+      <a href="votes.html" >Votes</a>
+      <a href="watching.html" >Watching</a>
+      <span class="nav-admin">
+        <a href="health.html" aria-current="page">System health</a>
+        <a href="settings.html" >Settings</a>
+        <a href="accounts.html" >People</a>
+      </span>
+      <details class="nav-more">
+        <summary class="is-current">More</summary>
+        <div class="nav-more-menu">
+          <a href="health.html" aria-current="page">System health</a>
+          <a href="settings.html" >Settings</a>
+          <a href="accounts.html" >People</a>
+        </div>
+      </details>
+    </nav>
+    <div class="whoami">
+      <span>User A · admin</span>
+      <a class="signout" href="signin.html">Sign out</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="page-head">
+  <h1>System health</h1>
+  <p class="page-note">Checked Thu 1 Oct, 3:10pm</p>
+</div>
+
+<div class="notice notice-bad" role="status" id="health-headline">
+  <strong>1 alert has given up and will never send</strong>
+  Retries are exhausted, so no later run will pick it up. Collection is unaffected. Nothing has been missed, only undelivered.
+</div>
+<div class="notice notice-ok" role="status" id="health-closed" hidden>
+  <strong>Reviewed, nothing to act on</strong>
+  The alert that gave up has been closed. Every other measure is inside its limit.
+</div>
+
+<div class="panel" id="needs-attention">
+  <div class="panel-head"><h2>Needs attention</h2><span class="page-note">one decision for an administrator</span></div>
+  <div class="panel-body">
+    <form class="review" id="close-alerts">
+      <span class="review-what">
+        <strong>1 alert gave up and will never send</strong>
+<span>Bill CC (Comet) Amendment Bill 2026, found Tue 22 Sep, 2:04pm, 3 attempts: The mail server refused the connection.</span>      </span>
+      <button type="submit">Close it</button>
+    </form>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-head"><h2>Signed off</h2><span class="page-note">The last decisions, and who made each one</span></div>
+  <div class="table-wrap">
+  <table class="cards">
+    <thead><tr><th scope="col">Measure</th><th scope="col" class="tight">Decision</th><th scope="col">By</th><th scope="col" class="tight">When</th><th scope="col">What they found</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>parse failure rate</td>
+        <td class="tight" data-label="Decision"><span class="chip chip-neutral">Signed off</span></td>
+        <td data-label="By">User B</td>
+        <td class="tight" data-label="When">Thu 10 Sep, 11:56am</td>
+        <td data-label="Found">Checked the unknown heading; the parser now knows it.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-head"><h2>The three that matter most</h2><span class="page-note">Everything else is below</span></div>
+  <div class="panel-body">
+    <div class="metric-grid" style="margin:0">
+      <div class="metric">
+        <span class="metric-name">Since last collection</span>
+        <span class="metric-value">10 min</span>
+        <span class="metric-note"><span class="chip chip-ok">Normal</span></span>
+      </div>
+      <div class="metric">
+        <span class="metric-name">Since robots rules checked</span>
+        <span class="metric-value">2.4 hours</span>
+        <span class="metric-note"><span class="chip chip-ok">Normal</span></span>
+      </div>
+      <div class="metric">
+        <span class="metric-name">Lists that paginated</span>
+        <span class="metric-value">0</span>
+        <span class="metric-note"><span class="chip chip-ok">Never happened</span></span>
+      </div>
+    </div>
+    <p class="page-note" style="margin:12px 0 0;font-family:inherit">
+      A list returning more than one page has never happened. It is not a fault,
+      but it changes how a page is read, so the first time it happens somebody
+      should check the result by hand.
+    </p>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-head"><h2>Collection runs</h2><span class="page-note">every 30 minutes, 6am to 10pm, the last two weeks</span></div>
+  <div class="table-wrap">
+  <table class="cards">
+    <thead><tr>
+      <th scope="col">Day</th><th scope="col" class="num tight">Runs</th><th scope="col" class="num tight">Changed</th>
+      <th scope="col" class="num tight">No change</th><th scope="col" class="num tight">Failed</th>
+      <th scope="col" class="num tight">Pages read</th><th scope="col" class="num tight">Movements found</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td>Thu 1 Oct 2026</td>
+        <td class="num tight" data-label="Runs">19</td>
+        <td class="num tight" data-label="Changed">1</td>
+        <td class="num tight" data-label="No change">18</td>
+        <td class="num tight" data-label="Failed">0</td>
+        <td class="num tight" data-label="Pages">94</td>
+        <td class="num tight" data-label="Movements">2</td>
+      </tr>
+      <tr>
+        <td>Wed 30 Sep 2026</td>
+        <td class="num tight" data-label="Runs">32</td>
+        <td class="num tight" data-label="Changed">3</td>
+        <td class="num tight" data-label="No change">29</td>
+        <td class="num tight" data-label="Failed">0</td>
+        <td class="num tight" data-label="Pages">163</td>
+        <td class="num tight" data-label="Movements">4</td>
+      </tr>
+      <tr>
+        <td>Tue 29 Sep 2026</td>
+        <td class="num tight" data-label="Runs">32</td>
+        <td class="num tight" data-label="Changed">1</td>
+        <td class="num tight" data-label="No change">31</td>
+        <td class="num tight" data-label="Failed">0</td>
+        <td class="num tight" data-label="Pages">162</td>
+        <td class="num tight" data-label="Movements">2</td>
+      </tr>
+      <tr>
+        <td>Mon 28 Sep 2026</td>
+        <td class="num tight" data-label="Runs">32</td>
+        <td class="num tight" data-label="Changed">0</td>
+        <td class="num tight" data-label="No change">32</td>
+        <td class="num tight" data-label="Failed">0</td>
+        <td class="num tight" data-label="Pages">165</td>
+        <td class="num tight" data-label="Movements">0</td>
+      </tr>
+      <tr>
+        <td>Sun 27 Sep 2026</td>
+        <td class="num tight" data-label="Runs">32</td>
+        <td class="num tight" data-label="Changed">0</td>
+        <td class="num tight" data-label="No change">32</td>
+        <td class="num tight" data-label="Failed">0</td>
+        <td class="num tight" data-label="Pages">158</td>
+        <td class="num tight" data-label="Movements">0</td>
+      </tr>
+      <tr>
+        <td>Sat 26 Sep 2026</td>
+        <td class="num tight" data-label="Runs">32</td>
+        <td class="num tight" data-label="Changed">0</td>
+        <td class="num tight" data-label="No change">31</td>
+        <td class="num tight" data-label="Failed"><span class="chip chip-bad">1</span></td>
+        <td class="num tight" data-label="Pages">157</td>
+        <td class="num tight" data-label="Movements">0</td>
+      </tr>
+      <tr>
+        <td>Fri 25 Sep 2026</td>
+        <td class="num tight" data-label="Runs">32</td>
+        <td class="num tight" data-label="Changed">0</td>
+        <td class="num tight" data-label="No change">32</td>
+        <td class="num tight" data-label="Failed">0</td>
+        <td class="num tight" data-label="Pages">160</td>
+        <td class="num tight" data-label="Movements">0</td>
+      </tr>
+      <tr>
+        <td>Thu 24 Sep 2026</td>
+        <td class="num tight" data-label="Runs">32</td>
+        <td class="num tight" data-label="Changed">3</td>
+        <td class="num tight" data-label="No change">29</td>
+        <td class="num tight" data-label="Failed">0</td>
+        <td class="num tight" data-label="Pages">155</td>
+        <td class="num tight" data-label="Movements">4</td>
+      </tr>
+      <tr>
+        <td>Wed 23 Sep 2026</td>
+        <td class="num tight" data-label="Runs">32</td>
+        <td class="num tight" data-label="Changed">1</td>
+        <td class="num tight" data-label="No change">31</td>
+        <td class="num tight" data-label="Failed">0</td>
+        <td class="num tight" data-label="Pages">167</td>
+        <td class="num tight" data-label="Movements">3</td>
+      </tr>
+      <tr>
+        <td>Tue 22 Sep 2026</td>
+        <td class="num tight" data-label="Runs">32</td>
+        <td class="num tight" data-label="Changed">3</td>
+        <td class="num tight" data-label="No change">29</td>
+        <td class="num tight" data-label="Failed">0</td>
+        <td class="num tight" data-label="Pages">166</td>
+        <td class="num tight" data-label="Movements">6</td>
+      </tr>
+      <tr>
+        <td>Mon 21 Sep 2026</td>
+        <td class="num tight" data-label="Runs">32</td>
+        <td class="num tight" data-label="Changed">0</td>
+        <td class="num tight" data-label="No change">32</td>
+        <td class="num tight" data-label="Failed">0</td>
+        <td class="num tight" data-label="Pages">158</td>
+        <td class="num tight" data-label="Movements">0</td>
+      </tr>
+      <tr>
+        <td>Sun 20 Sep 2026</td>
+        <td class="num tight" data-label="Runs">32</td>
+        <td class="num tight" data-label="Changed">0</td>
+        <td class="num tight" data-label="No change">32</td>
+        <td class="num tight" data-label="Failed">0</td>
+        <td class="num tight" data-label="Pages">156</td>
+        <td class="num tight" data-label="Movements">0</td>
+      </tr>
+      <tr>
+        <td>Sat 19 Sep 2026</td>
+        <td class="num tight" data-label="Runs">32</td>
+        <td class="num tight" data-label="Changed">0</td>
+        <td class="num tight" data-label="No change">32</td>
+        <td class="num tight" data-label="Failed">0</td>
+        <td class="num tight" data-label="Pages">152</td>
+        <td class="num tight" data-label="Movements">0</td>
+      </tr>
+      <tr>
+        <td>Fri 18 Sep 2026</td>
+        <td class="num tight" data-label="Runs">32</td>
+        <td class="num tight" data-label="Changed">0</td>
+        <td class="num tight" data-label="No change">32</td>
+        <td class="num tight" data-label="Failed">0</td>
+        <td class="num tight" data-label="Pages">162</td>
+        <td class="num tight" data-label="Movements">0</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+<p class="page-note" style="margin:10px 0 0;font-family:inherit"><b>Failed run, Sat 26 Sep, 2:30pm:</b> The source site did not answer within the time limit. The next run caught up.</p></div>
+
+<div class="panel">
+  <div class="panel-head"><h2>Alerts</h2><span class="page-note">urgent ones at once, the rest in one daily digest</span></div>
+  <div class="table-wrap">
+  <table class="cards">
+    <thead><tr>
+      <th scope="col" class="tight">Kind</th><th scope="col">About</th><th scope="col" class="tight">Found</th>
+      <th scope="col" class="tight">Sent</th><th scope="col" class="num tight">Attempts</th><th scope="col" class="tight">State</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-accent">Tier 1</span></td>
+        <td data-label="About">Bill CF (Beacon) Bill 2026: Second Reading Speech</td>
+        <td class="tight" data-label="Found">Thu 1 Oct, 1:03pm</td>
+        <td class="tight" data-label="Sent">Thu 1 Oct, 1:03pm</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-accent">Tier 1</span></td>
+        <td data-label="About">Bill CF (Beacon) Bill 2026: First Reading</td>
+        <td class="tight" data-label="Found">Thu 1 Oct, 1:01pm</td>
+        <td class="tight" data-label="Sent">Thu 1 Oct, 1:01pm</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-neutral">Tier 2 digest</span></td>
+        <td data-label="About">2 movements</td>
+        <td class="tight" data-label="Found"></td>
+        <td class="tight" data-label="Sent">Thu 1 Oct, 8:00am</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-accent">Tier 1</span></td>
+        <td data-label="About">Bill BC (Meadow) Bill 2025: Third Reading</td>
+        <td class="tight" data-label="Found">Wed 30 Sep, 2:31pm</td>
+        <td class="tight" data-label="Sent">Wed 30 Sep, 2:31pm</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-accent">Tier 1</span></td>
+        <td data-label="About">Bill CE (Comet) Amendment Bill 2026: First Reading</td>
+        <td class="tight" data-label="Found">Wed 30 Sep, 2:02pm</td>
+        <td class="tight" data-label="Sent">Wed 30 Sep, 2:02pm</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-accent">Tier 1</span></td>
+        <td data-label="About">Bill BA (Meadow) Bill 2025: Second Reading Agreed</td>
+        <td class="tight" data-label="Found">Tue 29 Sep, 2:33pm</td>
+        <td class="tight" data-label="Sent">Tue 29 Sep, 2:33pm</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-accent">Tier 1</span></td>
+        <td data-label="About">Bill BS (Granite) Amendment Bill 2026: Third Reading</td>
+        <td class="tight" data-label="Found">Tue 29 Sep, 2:32pm</td>
+        <td class="tight" data-label="Sent">Tue 29 Sep, 2:32pm</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-neutral">Tier 2 digest</span></td>
+        <td data-label="About">2 movements</td>
+        <td class="tight" data-label="Found"></td>
+        <td class="tight" data-label="Sent">Fri 25 Sep, 8:00am</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-accent">Tier 1</span></td>
+        <td data-label="About">Bill CD (Granite) Amendment Bill 2026: Second Reading Speech</td>
+        <td class="tight" data-label="Found">Thu 24 Sep, 3:04pm</td>
+        <td class="tight" data-label="Sent">Thu 24 Sep, 3:04pm</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-accent">Tier 1</span></td>
+        <td data-label="About">Bill CD (Granite) Amendment Bill 2026: First Reading</td>
+        <td class="tight" data-label="Found">Thu 24 Sep, 2:33pm</td>
+        <td class="tight" data-label="Sent">Thu 24 Sep, 2:33pm</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-neutral">Tier 2 digest</span></td>
+        <td data-label="About">2 movements</td>
+        <td class="tight" data-label="Found"></td>
+        <td class="tight" data-label="Sent">Thu 24 Sep, 8:00am</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-accent">Tier 1</span></td>
+        <td data-label="About">Bill CA (Beacon) Bill 2026: Third Reading</td>
+        <td class="tight" data-label="Found">Wed 23 Sep, 1:31pm</td>
+        <td class="tight" data-label="Sent">Wed 23 Sep, 1:31pm</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-neutral">Tier 2 digest</span></td>
+        <td data-label="About">2 movements</td>
+        <td class="tight" data-label="Found"></td>
+        <td class="tight" data-label="Sent">Wed 23 Sep, 8:00am</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-accent">Tier 1</span></td>
+        <td data-label="About">Bill AT (River) Repeal Bill 2025: Royal Assent</td>
+        <td class="tight" data-label="Found">Tue 22 Sep, 2:34pm</td>
+        <td class="tight" data-label="Sent">Tue 22 Sep, 2:34pm</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-neutral">Correction</span></td>
+        <td data-label="About">Bill AX (Harbour) Amendment Bill 2025: Third Reading</td>
+        <td class="tight" data-label="Found">Tue 22 Sep, 2:32pm</td>
+        <td class="tight" data-label="Sent">Tue 22 Sep, 2:33pm</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-accent">Tier 1</span></td>
+        <td data-label="About">Bill AX (Harbour) Amendment Bill 2025: Third Reading</td>
+        <td class="tight" data-label="Found">Tue 22 Sep, 2:02pm</td>
+        <td class="tight" data-label="Sent">Tue 22 Sep, 2:02pm</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-accent">Tier 1</span></td>
+        <td data-label="About">Bill BT (Falcon) Bill 2026: Second Reading Agreed</td>
+        <td class="tight" data-label="Found">Tue 22 Sep, 2:01pm</td>
+        <td class="tight" data-label="Sent">Tue 22 Sep, 2:01pm</td>
+        <td class="num tight" data-label="Attempts">1</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Sent</span></td>
+      </tr>
+      <tr>
+        <td class="tight" data-label="Kind"><span class="chip chip-accent">Tier 1</span></td>
+        <td data-label="About">Bill CC (Comet) Amendment Bill 2026: Second Reading Agreed</td>
+        <td class="tight" data-label="Found">Tue 22 Sep, 2:04pm</td>
+        <td class="tight" data-label="Sent">Not sent</td>
+        <td class="num tight" data-label="Attempts">3</td>
+        <td class="tight" data-label="State"><span class="chip chip-bad">Gave up</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-head"><h2>Everything measured</h2><span class="page-note">10 measures · hover a name to see what it means</span></div>
+  <div class="table-wrap">
+  <table class="cards">
+    <thead><tr><th scope="col">Measure</th><th scope="col" class="num tight">Value</th><th scope="col" class="num tight">Threshold</th><th scope="col" class="tight">State</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="tipped" title="How long since the list of bills was last read. It is read every half hour through the day.">hours since collection</span>
+</td>
+        <td class="num tight" data-label="Value">10 min</td>
+        <td class="num tight" data-label="Threshold">2.0 days</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Normal</span></td>
+      </tr>
+      <tr>
+        <td><span class="tipped" title="How long since the rules the site publishes for automated visitors were checked. Daily.">hours since robots rules checked</span>
+</td>
+        <td class="num tight" data-label="Value">2.4 hours</td>
+        <td class="num tight" data-label="Threshold">26.0 hours</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Normal</span></td>
+      </tr>
+      <tr>
+        <td><span class="tipped" title="A list arriving in more than one page for the first time.">lists that paginated</span>
+</td>
+        <td class="num tight" data-label="Value">0</td>
+        <td class="num tight" data-label="Threshold">0</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Normal</span></td>
+      </tr>
+      <tr>
+        <td><span class="tipped" title="The share of saved pages that could not be read properly.">parse failure rate</span>
+<span class="ack-note">Reviewed by User B, Thu 10 Sep, 11:56am &middot; Checked the unknown heading; the parser now knows it.</span></td>
+        <td class="num tight" data-label="Value">0.05%</td>
+        <td class="num tight" data-label="Threshold">0.00%</td>
+        <td class="tight" data-label="State"><span class="chip chip-neutral">Reviewed</span></td>
+      </tr>
+      <tr>
+        <td><span class="tipped" title="How many pages were fetched in the last two weeks. For information.">pages read in window</span>
+</td>
+        <td class="num tight" data-label="Value">2,175 pages</td>
+        <td class="num tight" data-label="Threshold">Not set</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Normal</span></td>
+      </tr>
+      <tr>
+        <td><span class="tipped" title="How many times a bill moved in the last two weeks.">movements found in window</span>
+</td>
+        <td class="num tight" data-label="Value">21 movements</td>
+        <td class="num tight" data-label="Threshold">Not set</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Normal</span></td>
+      </tr>
+      <tr>
+        <td><span class="tipped" title="Runs that did not finish. The next run catches up.">collection runs that failed</span>
+</td>
+        <td class="num tight" data-label="Value">1 of 435</td>
+        <td class="num tight" data-label="Threshold">5 runs</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Normal</span></td>
+      </tr>
+      <tr>
+        <td><span class="tipped" title="The typical gap between noticing a movement and emailing about it.">median alert latency</span>
+</td>
+        <td class="num tight" data-label="Value">0 seconds</td>
+        <td class="num tight" data-label="Threshold">30 min</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Normal</span></td>
+      </tr>
+      <tr>
+        <td><span class="tipped" title="Alerts waiting to go out, such as tomorrow morning&#39;s digest.">alerts unsent</span>
+</td>
+        <td class="num tight" data-label="Value">0 alerts</td>
+        <td class="num tight" data-label="Threshold">20 alerts</td>
+        <td class="tight" data-label="State"><span class="chip chip-ok">Normal</span></td>
+      </tr>
+      <tr id="given-up-row">
+        <td><span class="tipped" title="Alerts that used up every retry and will never send.">alerts given up on</span>
+</td>
+        <td class="num tight" data-label="Value">1 alert</td>
+        <td class="num tight" data-label="Threshold">0 alerts</td>
+        <td class="tight" data-label="State"><span class="chip chip-bad">Breached</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</main>
+
+<footer class="site-foot">
+  <span>All bills, members, votes and text on this site are fictional.</span>
+  <button type="button" class="linkish" data-reset title="Forget everything this demo saved in your browser">Reset demo</button>
+</footer>
+<script src="static/demo.js?v=549cc8dd85"></script>
+<script>
+(function () {
+  "use strict";
+  // Closing the alerts that gave up is a decision an administrator makes; the
+  // demo remembers it in this browser only.
+  var form = document.getElementById("close-alerts");
+  function draw() {
+    var closed = Demo.load("closedAlerts", false);
+    if (form) { document.getElementById("needs-attention").hidden = closed; }
+    document.getElementById("health-headline").hidden = closed;
+    document.getElementById("health-closed").hidden = !closed;
+    var row = document.getElementById("given-up-row");
+    if (row && closed) { row.querySelector("td:last-child").innerHTML = '<span class="chip chip-neutral">Reviewed</span>'; }
+  }
+  if (form) {
+    form.addEventListener("submit", function (event) { event.preventDefault(); Demo.save("closedAlerts", true); draw(); });
+  }
+  draw();
+})();
+</script>
+</body>
+</html>

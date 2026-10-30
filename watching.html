@@ -1,0 +1,1396 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Watching · Legislation Tracker demo</title>
+<meta name="description" content="A demo of a legislation tracker dashboard, built as a UWA Industrial Project. All data is fictional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="static/app.css?v=549cc8dd85">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="demo-banner" role="note">
+  <b>Demo with fictional data</b> <span class="sep">·</span> UWA Industrial Project
+  <span class="when"><span class="sep">·</span> Demo date: 1 October 2026</span>
+</div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="index.html">
+      <span class="wordmark">Legislation Tracker</span>
+      <span class="demo-tag">DEMO</span>
+    </a>
+    <nav class="primary" aria-label="Sections">
+      <a href="index.html" >Feed</a>
+      <a href="bills.html" >Bills</a>
+      <a href="trends.html" >Trends</a>
+      <a href="votes.html" >Votes</a>
+      <a href="watching.html" aria-current="page">Watching</a>
+      <span class="nav-admin">
+        <a href="health.html" >System health</a>
+        <a href="settings.html" >Settings</a>
+        <a href="accounts.html" >People</a>
+      </span>
+      <details class="nav-more">
+        <summary>More</summary>
+        <div class="nav-more-menu">
+          <a href="health.html" >System health</a>
+          <a href="settings.html" >Settings</a>
+          <a href="accounts.html" >People</a>
+        </div>
+      </details>
+    </nav>
+    <div class="whoami">
+      <span>User A · admin</span>
+      <a class="signout" href="signin.html">Sign out</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="page-head">
+  <h1>Watching</h1>
+  <p class="page-note" id="watch-count">0 bills</p>
+</div>
+
+<div class="notice" role="note">
+  <strong>Demo stand-in</strong>
+  The real screen splits bills by whether they moved since you last looked.
+  The demo date never moves on, so here they are split by whether they moved
+  in the two weeks before it. What you follow is saved only in this browser.
+</div>
+
+<div class="panel" id="watch-empty">
+  <div class="empty">
+    <strong>You are not following anything yet</strong>
+    Open a bill and choose "Watch this bill".
+  </div>
+</div>
+
+<div class="daygroup" id="watch-moved-group" hidden>
+  <div class="dayhead"><span class="d">Moved in the last two weeks</span><span class="n" id="watch-moved-n"></span></div>
+  <div id="watch-moved"></div>
+</div>
+<div class="daygroup" id="watch-quiet-group" hidden>
+  <div class="dayhead"><span class="d">Quiet</span><span class="n" id="watch-quiet-n"></span></div>
+  <div id="watch-quiet"></div>
+</div>
+
+
+<template data-watch="B29B11A022BF" data-moved="1">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/B29B11A022BF.html">Bill CF (Beacon) Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Second Reading Speech <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">early</span></span>
+    </span>
+    <div class="mv-when">Thu 1 Oct 2026<span class="ago">today</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="B29B11A022BF">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="93C01292D52B" data-moved="1">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/93C01292D52B.html">Bill AX (Harbour) Amendment Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Passed by Both Houses, Awaiting Assent <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">in its second chamber</span></span>
+    </span>
+    <div class="mv-when">Wed 30 Sep 2026<span class="ago">yesterday</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="93C01292D52B">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="5E7A610FE37C" data-moved="1">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/5E7A610FE37C.html">Bill BC (Meadow) Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Passed by Both Houses, Awaiting Assent <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">in its second chamber</span></span>
+    </span>
+    <div class="mv-when">Wed 30 Sep 2026<span class="ago">yesterday</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="5E7A610FE37C">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="6CC3D0D1A08A" data-moved="1">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/6CC3D0D1A08A.html">Bill CE (Comet) Amendment Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        First Reading <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">early</span></span>
+    </span>
+    <div class="mv-when">Wed 30 Sep 2026<span class="ago">yesterday</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="6CC3D0D1A08A">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="77192FE320A2" data-moved="1">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/77192FE320A2.html">Bill BA (Meadow) Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Second Reading Agreed <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Tue 29 Sep 2026<span class="ago">2 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="77192FE320A2">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="7ED85A227FE3" data-moved="1">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/7ED85A227FE3.html">Bill BS (Granite) Amendment Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Third Reading <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Tue 29 Sep 2026<span class="ago">2 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="7ED85A227FE3">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="B5456BC8D157" data-moved="1">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/B5456BC8D157.html">Bill BY (River) Amendment Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Amendments <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Thu 24 Sep 2026<span class="ago">7 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="B5456BC8D157">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="F9046FBC3BEE" data-moved="1">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/F9046FBC3BEE.html">Bill CC (Comet) Amendment Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Committee of the Whole <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Thu 24 Sep 2026<span class="ago">7 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="F9046FBC3BEE">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="3DFEE4FD58CE" data-moved="1">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/3DFEE4FD58CE.html">Bill CD (Granite) Amendment Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Second Reading Speech <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">early</span></span>
+    </span>
+    <div class="mv-when">Thu 24 Sep 2026<span class="ago">7 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="3DFEE4FD58CE">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="58A3A3A80E50" data-moved="1">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/58A3A3A80E50.html">Bill BL (Meadow) Amendment Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Restored to the Notice Paper <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">early</span></span>
+    </span>
+    <div class="mv-when">Wed 23 Sep 2026<span class="ago">8 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="58A3A3A80E50">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="8A89D9F4DCED" data-moved="1">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/8A89D9F4DCED.html">Bill BM (Falcon) Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Second Reading Agreed <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">in its second chamber</span></span>
+    </span>
+    <div class="mv-when">Tue 30 Jun 2026<span class="ago">3 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="8A89D9F4DCED">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="8B46B127B1C6" data-moved="1">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/8B46B127B1C6.html">Bill BX (Willow) Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        First Reading <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">passed its first chamber</span></span>
+    </span>
+    <div class="mv-when">Wed 23 Sep 2026<span class="ago">8 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="8B46B127B1C6">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="23BFF5CB3E28" data-moved="1">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/23BFF5CB3E28.html">Bill CA (Beacon) Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Third Reading <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Wed 23 Sep 2026<span class="ago">8 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="23BFF5CB3E28">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="A8819BB1EC34" data-moved="1">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/A8819BB1EC34.html">Bill AK (Willow) Amendment Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Committee of the Whole <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">in its second chamber</span></span>
+    </span>
+    <div class="mv-when">Tue 22 Sep 2026<span class="ago">9 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="A8819BB1EC34">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="904CCE5CF910" data-moved="1">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/904CCE5CF910.html">Bill AT (River) Repeal Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Tue 22 Sep 2026<span class="ago">9 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="904CCE5CF910">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="2B0C0207865B" data-moved="1">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/2B0C0207865B.html">Bill BT (Falcon) Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Second Reading Agreed <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Tue 22 Sep 2026<span class="ago">9 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="2B0C0207865B">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="5047101BE2F8" data-moved="1">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/5047101BE2F8.html">Bill BZ (Cedar) Amendment Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Consideration in Detail <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Tue 22 Sep 2026<span class="ago">9 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="5047101BE2F8">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="54A9621FEFDE" data-moved="">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/54A9621FEFDE.html">Bill CB (River) Repeal Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Second Reading Agreed <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Thu 10 Sep 2026<span class="ago">21 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="54A9621FEFDE">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="58B399BC9ED0" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/58B399BC9ED0.html">Bill BG (Comet) Amendment Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Tue 1 Sep 2026<span class="ago">30 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="58B399BC9ED0">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="EC8081432936" data-moved="">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/EC8081432936.html">Bill BH (Beacon) Amendment Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Committee of the Whole <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">in its second chamber</span></span>
+    </span>
+    <div class="mv-when">Tue 1 Sep 2026<span class="ago">30 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="EC8081432936">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="68ADB70D427F" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/68ADB70D427F.html">Bill AO (Granite) Repeal Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Mon 31 Aug 2026<span class="ago">31 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="68ADB70D427F">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="DC60F9577584" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/DC60F9577584.html">Bill BI (River) Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Mon 31 Aug 2026<span class="ago">31 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="DC60F9577584">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="0D672CCE68DB" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/0D672CCE68DB.html">Bill BB (River) Amendment Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Mon 24 Aug 2026<span class="ago">38 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="0D672CCE68DB">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="20A05505A7BF" data-moved="">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/20A05505A7BF.html">Bill AQ (Falcon) Amendment Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Second Reading Agreed <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">in its second chamber</span></span>
+    </span>
+    <div class="mv-when">Thu 20 Aug 2026<span class="ago">42 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="20A05505A7BF">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="D8EFB145B2F4" data-moved="">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/D8EFB145B2F4.html">Bill AP (Orchard) Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Amendments <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">in its second chamber</span></span>
+    </span>
+    <div class="mv-when">Wed 19 Aug 2026<span class="ago">43 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="D8EFB145B2F4">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="4705FA40E2AD" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/4705FA40E2AD.html">Bill BJ (Harbour) Amendment Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-warn">Laid aside</span>        Bill Laid Aside <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">laid aside</span></span>
+    </span>
+    <div class="mv-when">Wed 19 Aug 2026<span class="ago">43 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="4705FA40E2AD">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="C0B824E0E12B" data-moved="">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/C0B824E0E12B.html">Bill BO (Beacon) Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Second Reading Agreed <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">in its second chamber</span></span>
+    </span>
+    <div class="mv-when">Tue 18 Aug 2026<span class="ago">44 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="C0B824E0E12B">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="4EBD4658D535" data-moved="">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/4EBD4658D535.html">Bill AH (Cedar) Amendment Bill 2024</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Second Reading Agreed <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">in its second chamber</span></span>
+    </span>
+    <div class="mv-when">Wed 12 Aug 2026<span class="ago">50 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="4EBD4658D535">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="BCE5524683E9" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/BCE5524683E9.html">Bill BW (River) Repeal Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Withdrawn</span>        Bill Withdrawn <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">withdrawn</span></span>
+    </span>
+    <div class="mv-when">Wed 12 Aug 2026<span class="ago">50 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="BCE5524683E9">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="9294DB446A70" data-moved="">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/9294DB446A70.html">Bill BN (Granite) Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Second Reading Speech <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">passed its first chamber</span></span>
+    </span>
+    <div class="mv-when">Tue 11 Aug 2026<span class="ago">51 days ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="9294DB446A70">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="1F3F507DDAF7" data-moved="">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/1F3F507DDAF7.html">Bill BR (Falcon) Amendment Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Consideration in Detail <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Tue 30 Jun 2026<span class="ago">3 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="1F3F507DDAF7">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="3E4A9E7DD06A" data-moved="">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/3E4A9E7DD06A.html">Bill AL (Meadow) Amendment Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Passed by Both Houses, Awaiting Assent <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">in its second chamber</span></span>
+    </span>
+    <div class="mv-when">Tue 30 Jun 2026<span class="ago">3 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="3E4A9E7DD06A">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="E534F16CFBAE" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/E534F16CFBAE.html">Bill AN (Cedar) Amendment Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Tue 30 Jun 2026<span class="ago">3 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="E534F16CFBAE">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="856CC7D7A92E" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/856CC7D7A92E.html">Bill AR (Willow) Amendment Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Mon 29 Jun 2026<span class="ago">3 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="856CC7D7A92E">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="8CDF525175E4" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/8CDF525175E4.html">Bill BE (Willow) Repeal Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Defeated</span>        Bill Defeated <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">defeated</span></span>
+    </span>
+    <div class="mv-when">Thu 18 Jun 2026<span class="ago">3 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="8CDF525175E4">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="58A74D2F801A" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/58A74D2F801A.html">Bill BU (Falcon) Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Second reading not agreed</span>        Second Reading Not Agreed To <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">second reading not agreed</span></span>
+    </span>
+    <div class="mv-when">Thu 11 Jun 2026<span class="ago">3 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="58A74D2F801A">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="AE7B0E872931" data-moved="">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/AE7B0E872931.html">Bill BV (Granite) Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Second Reading Speech <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">passed its first chamber</span></span>
+    </span>
+    <div class="mv-when">Thu 11 Jun 2026<span class="ago">3 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="AE7B0E872931">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="D0CE95B2BE79" data-moved="">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/D0CE95B2BE79.html">Bill AJ (Granite) Repeal Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Second Reading Agreed <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">in its second chamber</span></span>
+    </span>
+    <div class="mv-when">Thu 28 May 2026<span class="ago">4 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="D0CE95B2BE79">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="66B6099DA42C" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/66B6099DA42C.html">Bill BP (Copper) Amendment Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Discharged</span>        Discharged from the Notice Paper <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">discharged</span></span>
+    </span>
+    <div class="mv-when">Thu 28 May 2026<span class="ago">4 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="66B6099DA42C">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="990FA0DBB013" data-moved="">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/990FA0DBB013.html">Bill BF (Granite) Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Third Reading <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Tue 19 May 2026<span class="ago">4 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="990FA0DBB013">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="6A6BA20D4A1A" data-moved="">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/6A6BA20D4A1A.html">Bill BK (River) Amendment Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-accent">Before Parliament</span>        Committee of the Whole <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Thu 9 Apr 2026<span class="ago">5 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="6A6BA20D4A1A">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="E6641547E4E8" data-moved="">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/E6641547E4E8.html">Bill BQ (River) Amendment Bill 2026</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Stalled 6 mo</span>
+        Second Reading Speech <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">early</span></span>
+    </span>
+    <div class="mv-when">Wed 25 Mar 2026<span class="ago">6 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="E6641547E4E8">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="8D33B74AEBE8" data-moved="">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/8D33B74AEBE8.html">Bill AW (Falcon) Amendment Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Stalled 7 mo</span>
+        Third Reading <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Tue 3 Mar 2026<span class="ago">7 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="8D33B74AEBE8">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="B2942A39F898" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/B2942A39F898.html">Bill AS (Meadow) Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Mon 2 Mar 2026<span class="ago">7 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="B2942A39F898">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="84A14E129830" data-moved="">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/84A14E129830.html">Bill AZ (Willow) Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Stalled 7 mo</span>
+        Second Reading Agreed <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Tue 24 Feb 2026<span class="ago">7 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="84A14E129830">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="D2C1E92E6F1A" data-moved="">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/D2C1E92E6F1A.html">Bill AU (Meadow) Amendment Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Stalled 8 mo</span>
+        Consideration in Detail <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Thu 27 Nov 2025<span class="ago">10 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="D2C1E92E6F1A">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="E7702A7B1796" data-moved="">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/E7702A7B1796.html">Bill AY (Lantern) Amendment Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Stalled 8 mo</span>
+        First Reading <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Tue 3 Feb 2026<span class="ago">8 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="E7702A7B1796">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="01A6C46AE09E" data-moved="">
+  <div class="mv mv-la">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/01A6C46AE09E.html">Bill BD (Orchard) Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Stalled 10 mo</span>
+        Second Reading Speech <span class="sep">·</span> Assembly
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">early</span></span>
+    </span>
+    <div class="mv-when">Thu 4 Dec 2025<span class="ago">10 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="01A6C46AE09E">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="887C1DC92E95" data-moved="">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/887C1DC92E95.html">Bill AV (Copper) Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Stalled 11 mo</span>
+        First Reading <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">being debated</span></span>
+    </span>
+    <div class="mv-when">Tue 4 Nov 2025<span class="ago">11 months ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="887C1DC92E95">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="62656562B835" data-moved="">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/62656562B835.html">Bill AI (Willow) Amendment Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Stalled 1 yr</span>
+        Second Reading Speech <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">in its second chamber</span></span>
+    </span>
+    <div class="mv-when">Sun 21 Sep 2025<span class="ago">1 year ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="62656562B835">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="3C3551B051CC" data-moved="">
+  <div class="mv mv-lc">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/3C3551B051CC.html">Bill AM (Orchard) Amendment Bill 2025</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Stalled 1 yr 1 mo</span>
+        Second Reading Speech <span class="sep">·</span> Council
+      </span>
+      <span class="rungs"><i class="rung on"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">early</span></span>
+    </span>
+    <div class="mv-when">Thu 21 Aug 2025<span class="ago">1 year 1 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="3C3551B051CC">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="1050D2F4EDA3" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/1050D2F4EDA3.html">Bill AF (Meadow) Amendment Bill 2023</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Wed 18 Sep 2024<span class="ago">2 years ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="1050D2F4EDA3">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="9745064EF03E" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/9745064EF03E.html">Bill AC (Meadow) Amendment Bill 2023</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Fri 23 Aug 2024<span class="ago">2 years 1 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="9745064EF03E">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="D819F2069733" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/D819F2069733.html">Bill AG (River) Amendment Bill 2024</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Thu 8 Aug 2024<span class="ago">2 years 1 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="D819F2069733">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="67DE4CEB44FD" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/67DE4CEB44FD.html">Bill Z (Orchard) Amendment Bill 2023</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Mon 1 Jul 2024<span class="ago">2 years 3 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="67DE4CEB44FD">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="43D302EA95E9" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/43D302EA95E9.html">Bill AD (Granite) Bill 2023</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Thu 27 Jun 2024<span class="ago">2 years 3 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="43D302EA95E9">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="36DFA456A590" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/36DFA456A590.html">Bill AE (Willow) Bill 2023</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Mon 17 Jun 2024<span class="ago">2 years 3 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="36DFA456A590">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="43F310F51F0B" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/43F310F51F0B.html">Bill AA (Meadow) Bill 2023</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Tue 13 Feb 2024<span class="ago">2 years 7 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="43F310F51F0B">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="B5AFA9EEB511" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/B5AFA9EEB511.html">Bill W (Willow) Amendment Bill 2023</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Wed 20 Dec 2023<span class="ago">2 years 9 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="B5AFA9EEB511">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="39C01B7C983C" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/39C01B7C983C.html">Bill X (Harbour) Amendment Bill 2023</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Mon 30 Oct 2023<span class="ago">2 years 11 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="39C01B7C983C">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="854056BF0D11" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/854056BF0D11.html">Bill AB (Orchard) Bill 2023</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Withdrawn</span>        Bill Withdrawn <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">withdrawn</span></span>
+    </span>
+    <div class="mv-when">Tue 17 Oct 2023<span class="ago">2 years 11 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="854056BF0D11">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="0C509DEBD704" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/0C509DEBD704.html">Bill V (Lantern) Repeal Bill 2023</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Thu 12 Oct 2023<span class="ago">2 years 11 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="0C509DEBD704">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="E5A639302B3D" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/E5A639302B3D.html">Bill Y (Harbour) Amendment Bill 2023</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Defeated</span>        Bill Defeated <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">defeated</span></span>
+    </span>
+    <div class="mv-when">Tue 15 Aug 2023<span class="ago">3 years 1 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="E5A639302B3D">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="C5BA259517FC" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/C5BA259517FC.html">Bill T (Beacon) Amendment Bill 2022</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Mon 26 Jun 2023<span class="ago">3 years 3 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="C5BA259517FC">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="BF75C0C5D526" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/BF75C0C5D526.html">Bill S (Cedar) Bill 2022</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Tue 20 Jun 2023<span class="ago">3 years 3 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="BF75C0C5D526">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="8828F0947EBF" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/8828F0947EBF.html">Bill U (River) Amendment Bill 2022</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Tue 2 May 2023<span class="ago">3 years 5 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="8828F0947EBF">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="441D4AD71E15" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/441D4AD71E15.html">Bill R (Lantern) Amendment Bill 2022</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Thu 20 Oct 2022<span class="ago">3 years 11 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="441D4AD71E15">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="9F9E09365883" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/9F9E09365883.html">Bill P (River) Bill 2021</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Thu 7 Jul 2022<span class="ago">4 years 2 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="9F9E09365883">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="1966C2C87096" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/1966C2C87096.html">Bill Q (Beacon) Amendment Bill 2022</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Discharged</span>        Discharged from the Notice Paper <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">discharged</span></span>
+    </span>
+    <div class="mv-when">Tue 21 Jun 2022<span class="ago">4 years 3 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="1966C2C87096">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="E10ADF171CAE" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/E10ADF171CAE.html">Bill O (Cedar) Amendment Bill 2020</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Wed 21 Apr 2021<span class="ago">5 years 5 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="E10ADF171CAE">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="0D4759FE3C42" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/0D4759FE3C42.html">Bill N (Granite) Repeal Bill 2020</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Defeated</span>        Bill Defeated <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">defeated</span></span>
+    </span>
+    <div class="mv-when">Tue 11 Aug 2020<span class="ago">6 years 1 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="0D4759FE3C42">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="FE50F261E072" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/FE50F261E072.html">Bill K (Orchard) Amendment Bill 2019</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Wed 17 Jun 2020<span class="ago">6 years 3 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="FE50F261E072">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="F166C04AC2B3" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/F166C04AC2B3.html">Bill M (Meadow) Bill 2019</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Fri 5 Jun 2020<span class="ago">6 years 3 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="F166C04AC2B3">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="148813C37CCA" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/148813C37CCA.html">Bill J (River) Bill 2019</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Wed 8 Apr 2020<span class="ago">6 years 5 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="148813C37CCA">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="31DEE380F2CA" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/31DEE380F2CA.html">Bill L (Cedar) Amendment Bill 2019</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Mon 30 Mar 2020<span class="ago">6 years 6 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="31DEE380F2CA">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="4BC0255D6725" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/4BC0255D6725.html">Bill I (Meadow) Amendment Bill 2019</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Wed 25 Dec 2019<span class="ago">6 years 9 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="4BC0255D6725">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="47CB9582ADA6" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/47CB9582ADA6.html">Bill H (Comet) Amendment Bill 2019</a>
+      <span class="mv-meta">
+<span class="chip chip-bad">Discharged</span>        Discharged from the Notice Paper <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">discharged</span></span>
+    </span>
+    <div class="mv-when">Tue 5 Nov 2019<span class="ago">6 years 11 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="47CB9582ADA6">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="F3ECB2C45688" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/F3ECB2C45688.html">Bill G (Comet) Amendment Bill 2018</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Thu 30 May 2019<span class="ago">7 years 4 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="F3ECB2C45688">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="C08E99EC3B8B" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/C08E99EC3B8B.html">Bill E (Comet) Amendment Bill 2018</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Mon 26 Nov 2018<span class="ago">7 years 10 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="C08E99EC3B8B">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="4C367B05BA0C" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/4C367B05BA0C.html">Bill D (Granite) Amendment Bill 2018</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Tue 13 Nov 2018<span class="ago">7 years 10 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="4C367B05BA0C">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="87931A9D4F72" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/87931A9D4F72.html">Bill F (River) Amendment Bill 2018</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Thu 1 Nov 2018<span class="ago">7 years 11 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="87931A9D4F72">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="8ABC67F4BAC1" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/8ABC67F4BAC1.html">Bill B (Cedar) Repeal Bill 2017</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Mon 22 Oct 2018<span class="ago">7 years 11 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="8ABC67F4BAC1">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="9C4DB14BC1E4" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/9C4DB14BC1E4.html">Bill C (Comet) Amendment Bill 2018</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Thu 30 Aug 2018<span class="ago">8 years 1 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="9C4DB14BC1E4">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+<template data-watch="F19DD904F0A6" data-moved="">
+  <div class="mv ">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <a class="mv-title mv-link" href="bills/F19DD904F0A6.html">Bill A (Harbour) Repeal Bill 2017</a>
+      <span class="mv-meta">
+<span class="chip chip-ok">Passed into law</span>        Royal Assent <span class="sep">·</span> Both houses
+      </span>
+      <span class="rungs"><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung done"></i><i class="rung now"></i><i class="rung "></i><i class="rung "></i><span class="label">became law</span></span>
+    </span>
+    <div class="mv-when">Wed 21 Feb 2018<span class="ago">8 years 7 mo ago</span>
+      <div class="mv-unwatch"><button type="button" class="secondary" data-follow="F19DD904F0A6">Stop watching</button></div>
+    </div>
+  </div>
+</template>
+</main>
+
+<footer class="site-foot">
+  <span>All bills, members, votes and text on this site are fictional.</span>
+  <button type="button" class="linkish" data-reset title="Forget everything this demo saved in your browser">Reset demo</button>
+</footer>
+<script src="static/demo.js?v=549cc8dd85"></script>
+<script>
+(function () {
+  "use strict";
+  var templates = Array.prototype.slice.call(document.querySelectorAll("template[data-watch]"));
+  var moved = document.getElementById("watch-moved");
+  var quiet = document.getElementById("watch-quiet");
+
+  function drawBills() {
+    var follows = Demo.follows();
+    moved.replaceChildren();
+    quiet.replaceChildren();
+    var counts = { moved: 0, quiet: 0 };
+    templates.forEach(function (t) {
+      if (!Object.prototype.hasOwnProperty.call(follows, t.dataset.watch)) { return; }
+      var where = t.dataset.moved ? "moved" : "quiet";
+      (where === "moved" ? moved : quiet).appendChild(t.content.cloneNode(true));
+      counts[where] += 1;
+    });
+    var total = counts.moved + counts.quiet;
+    document.getElementById("watch-count").textContent = total + " bill" + (total === 1 ? "" : "s");
+    document.getElementById("watch-empty").hidden = total > 0;
+    document.getElementById("watch-moved-group").hidden = total === 0;
+    document.getElementById("watch-quiet-group").hidden = counts.quiet === 0;
+    document.getElementById("watch-moved-n").textContent = counts.moved + " of " + total;
+    document.getElementById("watch-quiet-n").textContent = counts.quiet + " bill" + (counts.quiet === 1 ? "" : "s");
+    Demo.drawAllFollows();
+  }
+
+  // Stop watching on this page takes the row away at once.
+  document.addEventListener("click", function (event) {
+    if (event.target.closest("[data-follow]")) { window.setTimeout(drawBills, 0); }
+  });
+  drawBills();
+})();
+</script>
+</body>
+</html>

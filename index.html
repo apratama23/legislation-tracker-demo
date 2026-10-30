@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today · Legislation Tracker demo</title>
+<meta name="description" content="A demo of a legislation tracker dashboard, built as a UWA Industrial Project. All data is fictional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="static/app.css?v=549cc8dd85">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="demo-banner" role="note">
+  <b>Demo with fictional data</b> <span class="sep">·</span> UWA Industrial Project
+  <span class="when"><span class="sep">·</span> Demo date: 1 October 2026</span>
+</div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="index.html">
+      <span class="wordmark">Legislation Tracker</span>
+      <span class="demo-tag">DEMO</span>
+    </a>
+    <nav class="primary" aria-label="Sections">
+      <a href="index.html" aria-current="page">Feed</a>
+      <a href="bills.html" >Bills</a>
+      <a href="trends.html" >Trends</a>
+      <a href="votes.html" >Votes</a>
+      <a href="watching.html" >Watching</a>
+      <span class="nav-admin">
+        <a href="health.html" >System health</a>
+        <a href="settings.html" >Settings</a>
+        <a href="accounts.html" >People</a>
+      </span>
+      <details class="nav-more">
+        <summary>More</summary>
+        <div class="nav-more-menu">
+          <a href="health.html" >System health</a>
+          <a href="settings.html" >Settings</a>
+          <a href="accounts.html" >People</a>
+        </div>
+      </details>
+    </nav>
+    <div class="whoami">
+      <span>User A · admin</span>
+      <a class="signout" href="signin.html">Sign out</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="page-head">
+  <h1>Thursday, 1 October</h1>
+  <p class="page-note">Parliament sitting · last read 10 minutes ago</p>
+</div>
+
+<div class="metric-grid tiles">
+  <a class="metric" href="#movements">
+    <span class="metric-name">Moved today</span>
+    <span class="metric-value">1</span>
+    <span class="metric-note">across both chambers</span>
+    <span class="metric-go">See the latest movements <span class="arrow" aria-hidden="true">↓</span></span>
+  </a>
+  <a class="metric" href="bills.html?status=Before+Parliament">
+    <span class="metric-name">Before Parliament</span>
+    <span class="metric-value">38</span>
+    <span class="metric-note">of 84 tracked</span>
+    <span class="metric-go">See these bills <span class="arrow" aria-hidden="true">→</span></span>
+  </a>
+  <a class="metric hot" href="bills.html?stalled=1">
+    <span class="metric-name">Stalled 6 months+</span>
+    <span class="metric-value">9</span>
+    <span class="metric-note">no step in six months</span>
+    <span class="metric-go">See the stalled bills <span class="arrow" aria-hidden="true">→</span></span>
+  </a>
+  <a class="metric" href="bills.html?status=Passed+into+law">
+    <span class="metric-name">Became law</span>
+    <span class="metric-value">1</span>
+    <span class="metric-note">in the last 30 days</span>
+    <span class="metric-go">See what passed <span class="arrow" aria-hidden="true">→</span></span>
+  </a>
+</div>
+
+<div class="lead worth with-side">
+  <div class="lead-main">
+    <div class="worth-head">
+      <span class="lead-tag">◆ Worth a look</span>
+      <span class="worth-note">A prompt to check, not a verdict</span>
+    </div>
+    <article class="worth-story">
+      <h2><a href="bills/93C01292D52B.html">Bill AX (Harbour) Amendment Bill 2025</a></h2>
+      <p>
+        <strong>Houses exchanging amendments.</strong> 3 changes passed between the Houses since 10 September 2026. The latest, on 30 September 2026: Amendments agreed to by the Legislative Assembly.
+        <a href="source/93C01292D52B.html">Check the source record<span class="sr-only">: Bill AX (Harbour) Amendment Bill 2025</span></a>
+      </p>
+      <p class="worth-also">Also: Passed a House.</p>
+    </article>
+    <article class="worth-story">
+      <h2><a href="bills/7ED85A227FE3.html">Bill BS (Granite) Amendment Bill 2026</a></h2>
+      <p>
+        <strong>Passed a House.</strong> Passed the Legislative Assembly on 29 September 2026; now goes to the Legislative Council.
+        <a href="source/7ED85A227FE3.html">Check the source record<span class="sr-only">: Bill BS (Granite) Amendment Bill 2026</span></a>
+      </p>
+      <p class="worth-also">Followed by 3 colleagues.</p>
+    </article>
+  </div>
+  <section class="lead-side" aria-labelledby="also-worth">
+    <h3 id="also-worth">Also worth a look</h3>
+    <ul>
+      <li><a href="bills/E6641547E4E8.html">
+        <span class="t">Bill BQ (River) Amendment Bill 2026</span>
+        <span class="w">6 months at Second Reading Speech <span class="arrow" aria-hidden="true">→</span></span>
+      </a></li>
+      <li><a href="bills/5E7A610FE37C.html">
+        <span class="t">Bill BC (Meadow) Bill 2025</span>
+        <span class="w">Passed both Houses <span class="arrow" aria-hidden="true">→</span></span>
+      </a></li>
+      <li><a href="bills/B5456BC8D157.html">
+        <span class="t">Bill BY (River) Amendment Bill 2026</span>
+<span class="s">Introduced by Member AA</span>        <span class="w">Houses exchanging amendments · Thu 24 Sep 2026 <span class="arrow" aria-hidden="true">→</span></span>
+      </a></li>
+      <li><a href="bills/77192FE320A2.html">
+        <span class="t">Bill BA (Meadow) Bill 2025</span>
+        <span class="w">Moving again · Tue 29 Sep 2026 <span class="arrow" aria-hidden="true">→</span></span>
+      </a></li>
+    </ul>
+  </section>
+</div>
+
+<div class="panel">
+  <div class="panel-head">
+    <h2>Where the 38 live bills are sitting</h2>
+    <span class="page-note">right now</span>
+  </div>
+  <div class="panel-body">
+    <div class="funnel">
+      <a class="fn-row " href="bills.html?status=Before+Parliament&amp;stage=First+Reading">
+        <span class="fn-label">First Reading</span>
+        <span class="fn-track"><span class="fn-bar" style="width:10.5%"></span></span>
+        <span class="fn-n">4</span>
+      </a>
+      <a class="fn-row " href="bills.html?status=Before+Parliament&amp;stage=Second+Reading+Speech">
+        <span class="fn-label">Second Reading Speech</span>
+        <span class="fn-track"><span class="fn-bar" style="width:21.1%"></span></span>
+        <span class="fn-n">8</span>
+      </a>
+      <a class="fn-row wide" href="bills.html?status=Before+Parliament&amp;stage=Second+Reading+Agreed">
+        <span class="fn-label">Second Reading Agreed</span>
+        <span class="fn-track"><span class="fn-bar" style="width:23.7%"></span></span>
+        <span class="fn-n">9</span>
+      </a>
+      <a class="fn-row " href="bills.html?status=Before+Parliament&amp;stage=Committee+of+the+Whole">
+        <span class="fn-label">Committee of the Whole</span>
+        <span class="fn-track"><span class="fn-bar" style="width:10.5%"></span></span>
+        <span class="fn-n">4</span>
+      </a>
+      <a class="fn-row " href="bills.html?status=Before+Parliament&amp;stage=Consideration+in+Detail">
+        <span class="fn-label">Consideration in Detail</span>
+        <span class="fn-track"><span class="fn-bar" style="width:7.9%"></span></span>
+        <span class="fn-n">3</span>
+      </a>
+      <a class="fn-row " href="bills.html?status=Before+Parliament&amp;stage=Amendments">
+        <span class="fn-label">Amendments</span>
+        <span class="fn-track"><span class="fn-bar" style="width:5.3%"></span></span>
+        <span class="fn-n">2</span>
+      </a>
+      <a class="fn-row " href="bills.html?status=Before+Parliament&amp;stage=Third+Reading">
+        <span class="fn-label">Third Reading</span>
+        <span class="fn-track"><span class="fn-bar" style="width:10.5%"></span></span>
+        <span class="fn-n">4</span>
+      </a>
+      <a class="fn-row " href="bills.html?status=Before+Parliament&amp;stage=Passed+by+Both+Houses%2C+Awaiting+Assent">
+        <span class="fn-label">Passed by Both Houses, Awaiting Assent</span>
+        <span class="fn-track"><span class="fn-bar" style="width:7.9%"></span></span>
+        <span class="fn-n">3</span>
+      </a>
+      <a class="fn-row " href="bills.html?status=Before+Parliament&amp;stage=Restored+to+the+Notice+Paper">
+        <span class="fn-label">Restored to the Notice Paper</span>
+        <span class="fn-track"><span class="fn-bar" style="width:2.6%"></span></span>
+        <span class="fn-n">1</span>
+      </a>
+    </div>
+    <p class="fn-note"><b><a href="bills.html?stalled=1">9</a> of these
+    <a href="bills.html?status=Before+Parliament">38 bills</a>
+    have not moved in six months.</b> A bill can be sitting at any stage above and still
+    be stalled; the two say different things.</p>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-head">
+    <h2>Recorded votes</h2>
+    <span class="page-note">Parliament was counted 38 times in the sittings held</span>
+  </div>
+  <div class="panel-body">
+<div class="dv">
+  <span class="dv-head">
+    <a class="dv-subject dv-link" href="divisions/38.html">Bill CC (Comet) Amendment Bill 2026</a>
+    <span class="dv-nums">
+      <b>8</b><i>ayes</i><b class="no">7</b><i>noes</i>
+    </span>
+  </span>
+
+  <span class="dv-meta">
+    <span class="house house-lc">Legislative Council</span>
+    <span class="sep">·</span><span>Thu 24 Sep 2026</span>
+    <span class="sep">·</span><span>On a bill</span><span class="sep">·</span><span>Clause 13</span>    <span class="sep">·</span>
+    <span class="dv-verdict is-carried">Carried by 1</span>
+  </span>
+
+  <span class="dv-bar"><span class="dv-aye" style="width:53.3%"></span></span>
+
+</div>    <p class="fn-note" style="margin:14px 0 0">
+      <a href="votes.html">All 38 recorded votes</a> &nbsp;·&nbsp;
+      the only place in this tracker a member is named.
+    </p>
+  </div>
+</div>
+
+<div class="daygroup" id="movements">
+  <div class="dayhead">
+    <span class="d">Thursday 1 October <em>· today</em></span>
+    <span class="n">2 movements</span>
+  </div>
+  <a class="mv mv-la" href="bills/B29B11A022BF.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill CF (Beacon) Bill 2026</span>
+      <span class="mv-meta">
+        <span class="stage">Second Reading Speech</span>
+        Assembly      </span>
+    </span>
+    <span class="mv-when">1:03pm</span>
+  </a>
+  <a class="mv mv-la" href="bills/B29B11A022BF.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill CF (Beacon) Bill 2026</span>
+      <span class="mv-meta">
+        <span class="stage">First Reading</span>
+        Assembly      </span>
+    </span>
+    <span class="mv-when">1:01pm</span>
+  </a>
+</div>
+<div class="daygroup">
+  <div class="dayhead">
+    <span class="d">Wednesday 30 September</span>
+    <span class="n">4 movements</span>
+  </div>
+  <a class="mv " href="bills/5E7A610FE37C.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill BC (Meadow) Bill 2025</span>
+      <span class="mv-meta">
+        <span class="stage">Passed by Both Houses, Awaiting Assent</span>
+        Both houses <span class="sep">·</span> 302 days in Parliament      </span>
+    </span>
+    <span class="mv-when">3:33pm</span>
+  </a>
+  <a class="mv " href="bills/93C01292D52B.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill AX (Harbour) Amendment Bill 2025</span>
+      <span class="mv-meta">
+        <span class="stage">Passed by Both Houses, Awaiting Assent</span>
+        Both houses <span class="sep">·</span> 385 days in Parliament      </span>
+    </span>
+    <span class="mv-when">2:32pm</span>
+  </a>
+  <a class="mv mv-la" href="bills/5E7A610FE37C.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill BC (Meadow) Bill 2025</span>
+      <span class="mv-meta">
+        <span class="stage">Third Reading</span>
+        Assembly <span class="sep">·</span> 302 days in Parliament      </span>
+    </span>
+    <span class="mv-when">2:31pm</span>
+  </a>
+  <a class="mv mv-lc" href="bills/6CC3D0D1A08A.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill CE (Comet) Amendment Bill 2026</span>
+      <span class="mv-meta">
+        <span class="stage">First Reading</span>
+        Council <span class="sep">·</span> 1 days in Parliament      </span>
+    </span>
+    <span class="mv-when">2:02pm</span>
+  </a>
+</div>
+<div class="daygroup">
+  <div class="dayhead">
+    <span class="d">Tuesday 29 September</span>
+    <span class="n">2 movements</span>
+  </div>
+  <a class="mv mv-la" href="bills/77192FE320A2.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill BA (Meadow) Bill 2025</span>
+      <span class="mv-meta">
+        <span class="stage">Second Reading Agreed</span>
+        Assembly <span class="sep">·</span> 322 days in Parliament      </span>
+    </span>
+    <span class="mv-when">2:33pm</span>
+  </a>
+  <a class="mv mv-la" href="bills/7ED85A227FE3.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill BS (Granite) Amendment Bill 2026</span>
+      <span class="mv-meta">
+        <span class="stage">Third Reading</span>
+        Assembly <span class="sep">·</span> 175 days in Parliament      </span>
+    </span>
+    <span class="mv-when">2:32pm</span>
+  </a>
+</div>
+<div class="daygroup">
+  <div class="dayhead">
+    <span class="d">Thursday 24 September</span>
+    <span class="n">4 movements</span>
+  </div>
+  <a class="mv mv-la" href="bills/B5456BC8D157.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill BY (River) Amendment Bill 2026</span>
+      <span class="mv-meta">
+        <span class="stage">Amendments</span>
+        Assembly <span class="sep">·</span> 128 days in Parliament      </span>
+    </span>
+    <span class="mv-when">3:33pm</span>
+  </a>
+  <a class="mv mv-la" href="bills/3DFEE4FD58CE.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill CD (Granite) Amendment Bill 2026</span>
+      <span class="mv-meta">
+        <span class="stage">Second Reading Speech</span>
+        Assembly <span class="sep">·</span> 7 days in Parliament      </span>
+    </span>
+    <span class="mv-when">3:04pm</span>
+  </a>
+  <a class="mv mv-la" href="bills/3DFEE4FD58CE.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill CD (Granite) Amendment Bill 2026</span>
+      <span class="mv-meta">
+        <span class="stage">First Reading</span>
+        Assembly <span class="sep">·</span> 7 days in Parliament      </span>
+    </span>
+    <span class="mv-when">2:33pm</span>
+  </a>
+  <a class="mv mv-lc" href="bills/F9046FBC3BEE.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill CC (Comet) Amendment Bill 2026</span>
+      <span class="mv-meta">
+        <span class="stage">Committee of the Whole</span>
+        Council <span class="sep">·</span> 93 days in Parliament      </span>
+    </span>
+    <span class="mv-when">2:31pm</span>
+  </a>
+</div>
+<div class="daygroup">
+  <div class="dayhead">
+    <span class="d">Wednesday 23 September</span>
+    <span class="n">3 movements</span>
+  </div>
+  <a class="mv " href="bills/58A3A3A80E50.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill BL (Meadow) Amendment Bill 2026</span>
+      <span class="mv-meta">
+        <span class="stage">Restored to the Notice Paper</span>
+        Both houses <span class="sep">·</span> 238 days in Parliament      </span>
+    </span>
+    <span class="mv-when">1:32pm</span>
+  </a>
+  <a class="mv mv-lc" href="bills/8B46B127B1C6.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill BX (Willow) Bill 2026</span>
+      <span class="mv-meta">
+        <span class="stage">First Reading</span>
+        Council <span class="sep">·</span> 133 days in Parliament      </span>
+    </span>
+    <span class="mv-when">1:32pm</span>
+  </a>
+  <a class="mv mv-la" href="bills/23BFF5CB3E28.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill CA (Beacon) Bill 2026</span>
+      <span class="mv-meta">
+        <span class="stage">Third Reading</span>
+        Assembly <span class="sep">·</span> 113 days in Parliament      </span>
+    </span>
+    <span class="mv-when">1:31pm</span>
+  </a>
+</div>
+<div class="daygroup">
+  <div class="dayhead">
+    <span class="d">Tuesday 22 September</span>
+    <span class="n">6 movements</span>
+  </div>
+  <a class="mv mv-lc" href="bills/A8819BB1EC34.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill AK (Willow) Amendment Bill 2025</span>
+      <span class="mv-meta">
+        <span class="stage">Committee of the Whole</span>
+        Council <span class="sep">·</span> 469 days in Parliament      </span>
+    </span>
+    <span class="mv-when">3:33pm</span>
+  </a>
+  <a class="mv " href="bills/904CCE5CF910.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill AT (River) Repeal Bill 2025</span>
+      <span class="mv-meta">
+        <span class="stage">Royal Assent</span>
+        Both houses <span class="sep">·</span> 413 days in Parliament      </span>
+    </span>
+    <span class="mv-when">2:34pm</span>
+  </a>
+  <a class="mv mv-la" href="bills/5047101BE2F8.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill BZ (Cedar) Amendment Bill 2026</span>
+      <span class="mv-meta">
+        <span class="stage">Consideration in Detail</span>
+        Assembly <span class="sep">·</span> 126 days in Parliament      </span>
+    </span>
+    <span class="mv-when">2:04pm</span>
+  </a>
+  <a class="mv mv-lc" href="bills/F9046FBC3BEE.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill CC (Comet) Amendment Bill 2026</span>
+      <span class="mv-meta">
+        <span class="stage">Second Reading Agreed</span>
+        Council <span class="sep">·</span> 93 days in Parliament      </span>
+    </span>
+    <span class="mv-when">2:04pm</span>
+  </a>
+  <a class="mv mv-lc" href="bills/93C01292D52B.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill AX (Harbour) Amendment Bill 2025</span>
+      <span class="mv-meta">
+        <span class="stage">Third Reading</span>
+        Council <span class="sep">·</span> 385 days in Parliament      </span>
+    </span>
+    <span class="mv-when">2:02pm</span>
+  </a>
+  <a class="mv mv-la" href="bills/2B0C0207865B.html">
+    <span class="mv-rail" aria-hidden="true"></span>
+    <span class="mv-body">
+      <span class="mv-title">Bill BT (Falcon) Bill 2026</span>
+      <span class="mv-meta">
+        <span class="stage">Second Reading Agreed</span>
+        Assembly <span class="sep">·</span> 156 days in Parliament      </span>
+    </span>
+    <span class="mv-when">2:01pm</span>
+  </a>
+</div>
+<p class="page-note" style="margin-top:20px">Showing the movements of the last two weeks.</p>
+</main>
+
+<footer class="site-foot">
+  <span>All bills, members, votes and text on this site are fictional.</span>
+  <button type="button" class="linkish" data-reset title="Forget everything this demo saved in your browser">Reset demo</button>
+</footer>
+<script src="static/demo.js?v=549cc8dd85"></script>
+</body>
+</html>

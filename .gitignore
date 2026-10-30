@@ -1,0 +1,14 @@
+# Only the built site and the README are published (GitHub Pages serves
+# the repo root). Everything else stays on the owner's machine.
+/*
+!/.gitignore
+!/.gitattributes
+!/.nojekyll
+!/README.md
+!/*.html
+!/bills/
+!/divisions/
+!/members/
+!/source/
+!/documents/
+!/static/

@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Member R · Legislation Tracker demo</title>
+<meta name="description" content="A demo of a legislation tracker dashboard, built as a UWA Industrial Project. All data is fictional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="../static/app.css?v=549cc8dd85">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="demo-banner" role="note">
+  <b>Demo with fictional data</b> <span class="sep">·</span> UWA Industrial Project
+  <span class="when"><span class="sep">·</span> Demo date: 1 October 2026</span>
+</div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="../index.html">
+      <span class="wordmark">Legislation Tracker</span>
+      <span class="demo-tag">DEMO</span>
+    </a>
+    <nav class="primary" aria-label="Sections">
+      <a href="../index.html" >Feed</a>
+      <a href="../bills.html" >Bills</a>
+      <a href="../trends.html" >Trends</a>
+      <a href="../votes.html" aria-current="page">Votes</a>
+      <a href="../watching.html" >Watching</a>
+      <span class="nav-admin">
+        <a href="../health.html" >System health</a>
+        <a href="../settings.html" >Settings</a>
+        <a href="../accounts.html" >People</a>
+      </span>
+      <details class="nav-more">
+        <summary>More</summary>
+        <div class="nav-more-menu">
+          <a href="../health.html" >System health</a>
+          <a href="../settings.html" >Settings</a>
+          <a href="../accounts.html" >People</a>
+        </div>
+      </details>
+    </nav>
+    <div class="whoami">
+      <span>User A · admin</span>
+      <a class="signout" href="../signin.html">Sign out</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="page-tools"><a class="back" href="../members.html">← Members</a></div>
+<div class="page-head">
+  <h1>Member R</h1>
+  <p class="page-note">Legislative Assembly · Party 3 · District 18 · Sitting member</p>
+</div>
+<nav class="settings-tabs" aria-label="Recorded votes">
+  <a href="../votes.html">Votes</a>
+  <a href="../members.html" aria-current="page">Members</a>
+</nav><div class="metric-grid tiles member-tiles">
+  <div class="metric"><span class="metric-name">Recorded votes</span><span class="metric-value">19</span><span class="metric-note">named in, both kinds</span></div>
+  <div class="metric"><span class="metric-name">Aye</span><span class="metric-value">3</span><span class="metric-note">voted for the question</span></div>
+  <div class="metric"><span class="metric-name">No</span><span class="metric-value">16</span><span class="metric-note">voted against</span></div>
+  <div class="metric"><span class="metric-name">With the winning side</span><span class="metric-value">0</span><span class="metric-note">of 19</span></div>
+</div>
+<div class="panel">
+  <div class="panel-head"><h2>How Member R voted</h2><span class="page-note">newest first</span></div>
+  <div class="table-wrap">
+  <table class="cards member-votes">
+    <thead><tr><th scope="col">Sitting</th><th scope="col">Bill or motion</th><th scope="col">Voted</th><th scope="col">Result</th></tr></thead>
+    <tbody>
+      <tr>
+        <td data-label="Sitting" class="tight">Thu 10 Sep 2026</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/35.html">Bill CB (River) Repeal Bill 2026</a>
+          <span class="mv-q">Bill · That the bill be now read a second time.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 17 to 9</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Thu 20 Aug 2026</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/34.html">Bill BX (Willow) Bill 2026</a>
+          <span class="mv-q">Bill · That the clause stand as printed.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+<span class="page-note"> (teller)</span>        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 19 to 8</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Thu 13 Aug 2026</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/33.html">Bill BX (Willow) Bill 2026</a>
+          <span class="mv-q">Bill · That the bill be now read a second time.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 16 to 10</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Tue 11 Aug 2026</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/31.html">Bill BB (River) Amendment Bill 2025</a>
+          <span class="mv-q">Bill · That the amendment be agreed to.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-aye">Aye</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-negatived">Vetoed 7 to 17</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Tue 9 Jun 2026</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/27.html">Bill AR (Willow) Amendment Bill 2025</a>
+          <span class="mv-q">Bill · That the bill be now read a third time.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 17 to 10</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Thu 21 May 2026</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/26.html">Bill AR (Willow) Amendment Bill 2025</a>
+          <span class="mv-q">Bill · That the clause stand as printed.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+<span class="page-note"> (teller)</span>        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 18 to 7</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Tue 19 May 2026</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/24.html">Bill BF (Granite) Bill 2026</a>
+          <span class="mv-q">Bill · That the bill be now read a third time.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+<span class="page-note"> (teller)</span>        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 16 to 8</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Tue 24 Mar 2026</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/21.html">Bill BH (Beacon) Amendment Bill 2026</a>
+          <span class="mv-q">Bill · That the bill be now read a second time.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 16 to 7</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Tue 17 Mar 2026</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/20.html">Bill BI (River) Bill 2026</a>
+          <span class="mv-q">Bill · That the amendment be agreed to.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-aye">Aye</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-negatived">Vetoed 10 to 15</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Tue 10 Feb 2026</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/18.html">Bill AO (Granite) Repeal Bill 2025</a>
+          <span class="mv-q">Bill · That the bill be now read a third time.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 16 to 9</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Thu 16 Oct 2025</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/14.html">Bill AV (Copper) Bill 2025</a>
+          <span class="mv-q">Bill · That the bill be now read a second time.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 18 to 10</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Thu 15 Aug 2024</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/13.html">Bill AH (Cedar) Amendment Bill 2024</a>
+          <span class="mv-q">Bill · That the bill be now read a second time.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 16 to 10</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Tue 16 Apr 2024</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/10.html">Bill AF (Meadow) Amendment Bill 2023</a>
+          <span class="mv-q">Bill · That the bill be now read a second time.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 16 to 11</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Tue 27 Feb 2024</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/9.html">Bill AC (Meadow) Amendment Bill 2023</a>
+          <span class="mv-q">Bill · That the amendment be agreed to.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-aye">Aye</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-negatived">Vetoed 9 to 17</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Tue 7 Nov 2023</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/8.html">Bill Z (Orchard) Amendment Bill 2023</a>
+          <span class="mv-q">Bill · That the clause stand as printed.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 18 to 9</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Wed 24 May 2023</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/6.html">Bill V (Lantern) Repeal Bill 2023</a>
+          <span class="mv-q">Bill · That the bill be now read a second time.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 17 to 10</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Tue 14 Feb 2023</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/5.html">Bill U (River) Amendment Bill 2022</a>
+          <span class="mv-q">Bill · That the bill be now read a third time.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 18 to 10</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Wed 8 Feb 2023</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/4.html">Bill U (River) Amendment Bill 2022</a>
+          <span class="mv-q">Bill · That the clause stand as printed.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 18 to 9</span></td>
+      </tr>
+      <tr>
+        <td data-label="Sitting" class="tight">Tue 31 May 2022</td>
+        <td data-label="Bill or motion">
+          <a href="../divisions/1.html">Bill R (Lantern) Amendment Bill 2022</a>
+          <span class="mv-q">Bill · That the bill be now read a second time.</span>
+        </td>
+        <td data-label="Voted">
+          <span class="mv-vote is-no">No</span>
+        </td>
+        <td data-label="Result"><span class="dv-verdict is-carried">Carried 17 to 8</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</main>
+
+<footer class="site-foot">
+  <span>All bills, members, votes and text on this site are fictional.</span>
+  <button type="button" class="linkish" data-reset title="Forget everything this demo saved in your browser">Reset demo</button>
+</footer>
+<script src="../static/demo.js?v=549cc8dd85"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings · History · Legislation Tracker demo</title>
+<meta name="description" content="A demo of a legislation tracker dashboard, built as a UWA Industrial Project. All data is fictional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="static/app.css?v=549cc8dd85">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="demo-banner" role="note">
+  <b>Demo with fictional data</b> <span class="sep">·</span> UWA Industrial Project
+  <span class="when"><span class="sep">·</span> Demo date: 1 October 2026</span>
+</div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="index.html">
+      <span class="wordmark">Legislation Tracker</span>
+      <span class="demo-tag">DEMO</span>
+    </a>
+    <nav class="primary" aria-label="Sections">
+      <a href="index.html" >Feed</a>
+      <a href="bills.html" >Bills</a>
+      <a href="trends.html" >Trends</a>
+      <a href="votes.html" >Votes</a>
+      <a href="watching.html" >Watching</a>
+      <span class="nav-admin">
+        <a href="health.html" >System health</a>
+        <a href="settings.html" aria-current="page">Settings</a>
+        <a href="accounts.html" >People</a>
+      </span>
+      <details class="nav-more">
+        <summary class="is-current">More</summary>
+        <div class="nav-more-menu">
+          <a href="health.html" >System health</a>
+          <a href="settings.html" aria-current="page">Settings</a>
+          <a href="accounts.html" >People</a>
+        </div>
+      </details>
+    </nav>
+    <div class="whoami">
+      <span>User A · admin</span>
+      <a class="signout" href="signin.html">Sign out</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="page-head">
+  <h1>Settings</h1>
+  <p class="page-note">Who changed what, and when</p>
+</div>
+<nav class="settings-tabs" aria-label="Settings">
+  <a href="settings.html">Alerts</a>
+  <a href="settings-worth.html">Worth a look</a>
+  <a href="settings-categories.html">Categories</a>
+  <a href="settings-history.html" aria-current="page">History</a>
+</nav>
+
+<div class="notice notice-ok" role="status" id="saved" hidden><strong></strong><ul class="saved-lines"></ul></div>
+<div class="notice notice-bad" role="alert" id="refused" hidden>
+  <strong>Not saved</strong>Nothing in this section was changed.<ul></ul>
+</div>
+
+
+
+
+<div class="panel" id="changes">
+  <div class="panel-head"><h2>Every change, newest first</h2><span class="page-note">kept for good, never edited</span></div>
+  <div class="table-wrap">
+  <table class="snug cards">
+    <thead><tr><th scope="col" class="tight">When</th><th scope="col" class="tight">Who</th><th scope="col" class="tight">Area</th><th scope="col">What changed</th></tr></thead>
+    <tbody id="history-rows"></tbody>
+  </table>
+  </div>
+</div>
+
+<script type="application/json" id="settings-defaults">{"alerts": {"category_recipients": {"Lights": ["user-d@example.com", "user-e@example.com"], "Resources": ["user-d@example.com"], "Water": ["user-b@example.com"]}, "digest_at": "08:00", "digest_grace_hours": 4, "recipients": ["newsroom@example.com", "user-a@example.com", "user-c@example.com"], "tier_map": {"1st_read|originating": 1, "1st_read|second": 2, "2nd_read_agreed|originating": 1, "2nd_read_agreed|second": 1, "2nd_read_hansard|originating": 1, "2nd_read_hansard|second": 2, "3rd_read|originating": 1, "3rd_read|second": 1, "amend|originating": 2, "amend|second": 2, "awaiting_assent|na": 2, "bill_defeated|na": 1, "bill_discharged|na": 1, "bill_laid_aside|na": 2, "bill_lapsed|na": 1, "bill_reinstated|na": 2, "bill_restored|na": 2, "bill_ruled_invalid|na": 1, "bill_ruled_out_of_order|na": 1, "bill_withdrawn|na": 1, "consid_detail|originating": 2, "consid_detail|second": 2, "royal_assent|na": 1, "second_reading_not_agreed|na": 2, "second_reading_not_agreed|originating": 1, "second_reading_not_agreed|second": 2}, "urgent_from": "06:00", "urgent_to": "21:00"}, "categories": [{"keywords": ["harbour", "river"], "name": "Water"}, {"keywords": ["meadow", "orchard", "willow"], "name": "Land"}, {"keywords": ["copper", "granite"], "name": "Resources"}, {"keywords": ["beacon", "comet", "lantern"], "name": "Lights"}], "history": [{"area": "Send times", "what": "Digest at: 07:30 \u2192 08:00", "when": "Tue 30 Jun, 10:12am", "who": "User A"}, {"area": "Who is emailed", "what": "Every alert: added user-c@example.com", "when": "Tue 30 Jun, 2:40pm", "who": "User B"}, {"area": "Worth a look", "what": "Setting I: 3 \u2192 2", "when": "Tue 1 Sep, 9:05am", "who": "User A"}, {"area": "Categories", "what": "Keywords of Lights: beacon, comet \u2192 beacon, comet, lantern", "when": "Thu 10 Sep, 4:22pm", "who": "User B"}], "priority": {"boost_default": 50.0, "boost_high": 100.0, "boost_low": 0.0, "places": 3}, "worth": [{"high": 10.0, "kind": "number", "low": 0.0, "name": "Setting Z", "switch": {"name": "Setting Y", "value": true}, "value": 1}, {"high": 10.0, "kind": "number", "low": 0.0, "name": "Setting A", "switch": {"name": "Setting M", "value": true}, "value": 10}, {"high": 10.0, "kind": "number", "low": 0.0, "name": "Setting B", "switch": {"name": "Setting N", "value": true}, "value": 5}, {"high": 10.0, "kind": "number", "low": 0.0, "name": "Setting C", "switch": {"name": "Setting O", "value": true}, "value": 5}, {"high": 10.0, "kind": "number", "low": 0.0, "name": "Setting D", "switch": {"name": "Setting P", "value": true}, "value": 5}, {"high": 10.0, "kind": "number", "low": 0.0, "name": "Setting E", "switch": {"name": "Setting Q", "value": true}, "value": 4}, {"high": 10.0, "kind": "number", "low": 0.0, "name": "Setting F", "switch": {"name": "Setting R", "value": true}, "value": 4}, {"high": 10.0, "kind": "number", "low": 0.0, "name": "Setting G", "switch": {"name": "Setting S", "value": true}, "value": 3}, {"high": 10.0, "kind": "number", "low": 0.0, "name": "Setting H", "switch": {"name": "Setting T", "value": true}, "value": 3}, {"high": 10.0, "kind": "number", "low": 0.0, "name": "Setting I", "switch": {"name": "Setting U", "value": true}, "value": 2}, {"high": 10.0, "kind": "number", "low": 0.0, "name": "Setting J", "switch": {"name": "Setting V", "value": true}, "value": 2}, {"high": 10.0, "kind": "number", "low": 0.0, "name": "Setting K", "switch": {"name": "Setting W", "value": true}, "value": 1}, {"high": 10.0, "kind": "number", "low": 0.0, "name": "Setting L", "switch": {"name": "Setting X", "value": false}, "value": 2}, {"high": 20.0, "kind": "whole", "low": 1.0, "name": "Setting AO", "switch": {"name": "Setting AN", "value": true}, "value": 2}, {"high": 20.0, "kind": "number", "low": 0.0, "name": "Setting AA", "switch": {"name": "Setting AQ", "value": true}, "value": 2}, {"high": 90.0, "kind": "number", "low": 1.0, "name": "Setting AB", "switch": {"name": "Setting AR", "value": true}, "value": 7}, {"high": 180.0, "kind": "whole", "low": 1.0, "name": "Setting AC", "switch": {"name": "Setting AS", "value": true}, "value": 21}, {"high": 90.0, "kind": "whole", "low": 1.0, "name": "Setting AD", "switch": {"name": "Setting AT", "value": true}, "value": 14}, {"high": 99.0, "kind": "number", "low": 50.0, "name": "Setting AE", "switch": {"name": "Setting AU", "value": true}, "value": 75}, {"high": 99.0, "kind": "number", "low": 50.0, "name": "Setting AF", "switch": {"name": "Setting AV", "value": true}, "value": 90}, {"high": 99.0, "kind": "number", "low": 50.0, "name": "Setting AG", "switch": {"name": "Setting AW", "value": true}, "value": 75}, {"high": 365.0, "kind": "whole", "low": 1.0, "name": "Setting AH", "switch": {"name": "Setting AX", "value": true}, "value": 28}, {"high": 1000.0, "kind": "whole", "low": 30.0, "name": "Setting AI", "switch": {"name": "Setting AY", "value": true}, "value": 180}, {"high": 60.0, "kind": "whole", "low": 1.0, "name": "Setting AJ", "switch": {"name": "Setting AZ", "value": true}, "value": 14}, {"high": 1000.0, "kind": "whole", "low": 3.0, "name": "Setting AK", "switch": {"name": "Setting BA", "value": true}, "value": 10}, {"high": 100.0, "kind": "number", "low": 0.0, "name": "Setting AL", "switch": {"name": "Setting BB", "value": true}, "value": 1}, {"high": 20.0, "kind": "whole", "low": 1.0, "name": "Setting AM", "switch": {"name": "Setting BC", "value": true}, "value": 6}, {"high": 20.0, "kind": "whole", "low": 0.0, "name": "Setting AP", "switch": {"name": "Setting BD", "value": true}, "value": 2}]}</script>
+</main>
+
+<footer class="site-foot">
+  <span>All bills, members, votes and text on this site are fictional.</span>
+  <button type="button" class="linkish" data-reset title="Forget everything this demo saved in your browser">Reset demo</button>
+</footer>
+<script src="static/demo.js?v=549cc8dd85"></script>
+<script src="static/settings.js?v=549cc8dd85"></script>
+</body>
+</html>
