@@ -187,13 +187,3 @@ python -m http.server 8000
 then open http://localhost:8000. Opening `index.html` straight from disk also
 works for most pages, though browsers limit what a page opened that way can
 save.
-
-## Team and acknowledgements
-
-<!-- Team members: add names and roles here. -->
-- _Team member names and roles to be added._
-
-<!-- Industry partner: add the permission line here once granted. -->
-- _Acknowledgement of the industry partner to be added once permission is granted._
-
-Built as a UWA Industrial Project.
