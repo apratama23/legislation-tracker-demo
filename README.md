@@ -242,15 +242,3 @@ We checked the real system four ways:
   not re-rank the list.
 - **Shared saving.** Your browser keeps what you change (followed bills,
   settings, categories). **Reset demo** in the footer clears it.
-
-## Run it locally
-
-This repository holds the built site: plain HTML, CSS and JavaScript with no
-build step. Serve the folder with a static web server, for example:
-
-```bash
-python -m http.server 8000
-```
-
-then open http://localhost:8000. You can also open `index.html` straight from
-disk; browsers then limit what the page can save.
