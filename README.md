@@ -242,3 +242,9 @@ We checked the real system four ways:
   not re-rank the list.
 - **Shared saving.** Your browser keeps what you change (followed bills,
   settings, categories). **Reset demo** in the footer clears it.
+
+## AI assistance
+
+I wrote this demo with an AI coding assistant. I decided what each page should show and checked each result in the browser; the assistant wrote much of the code, for the pages and the build script.
+
+I also used the assistant to anonymise the data: it generated the fictional records and helped me check that no real names remained.
