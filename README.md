@@ -1,19 +1,19 @@
 # Legislation Tracker (demo)
 
-We built a legislation tracker for a newsroom, our industry partner, as a UWA
-Industrial Project.
-The system follows each bill through a state parliament, keeps a permanent
-record of its steps, emails reporters when an important step happens, and
-gives them a dashboard that suggests a few bills to check each day.
+Our student team built a legislation tracker for a newsroom, the industry
+partner on our UWA Industrial Project. The system follows each bill through a
+state parliament, keeps a permanent record of its steps, emails reporters when
+an important step happens, and gives them a dashboard that suggests a few bills
+to check each day.
 
-This repository holds a **portfolio demo** of that dashboard. You can click
-through it as a reporter would, but we replaced the real data with made-up
-data and took out the real names. The parts that collect, store and send are
-not here.
+I built this repository as a **portfolio demo** of that dashboard. You can
+click through it as a reporter would. I replaced the real data with made-up
+data, took out the real names, and left out the parts that collect, store and
+send.
 
 **Live demo:** available on request.
 
-> **Disclaimer.** This demo exists for portfolio purposes. We disguised the
+> **Disclaimer.** This demo exists for portfolio purposes. I disguised the
 > real data: the bills, members, votes, documents and text are fictional.
 > Bills go by "Bill A", "Bill B" and so on, members by "Member A" onwards,
 > parties by "Party 1" to "Party 4", and the text is filler. The numbers on the
@@ -22,8 +22,8 @@ not here.
 
 ## The problem
 
-Reporters at the newsroom followed bills by checking the parliament's
-website by hand. The parliament publishes each bill's progress across scattered web
+Reporters at the newsroom followed bills by checking the parliament's website
+by hand. The parliament publishes each bill's progress across scattered web
 pages, with no data feed and no timetable. A bill can sit in a committee for
 weeks and then move overnight, so a reporter cannot tell when to look, and a
 step they find a day late is stale news. Checking several times a day costs
@@ -109,9 +109,9 @@ flowchart LR
   and the old and new values.
 
 In this demo, none of the collector, parser, database, sender, health check or
-API runs. A script generated a fictional world, we rendered the pages from it
-once, and this repository publishes the finished pages as static files. We
-ranked the Worth a look list ahead of time.
+API runs. A script generated a fictional world, I rendered the pages from it
+once, and I published the finished pages here as static files. I ranked the
+Worth a look list ahead of time, so the demo needs no server.
 
 ## Change detection with hashing
 
@@ -172,12 +172,12 @@ Nothing gets sent.
 
 ## Worth a look ranking
 
-We keep the ranking engine private. In outline:
+I keep the ranking engine private. In outline:
 
 - **Reasons.** A bill before parliament can carry reasons to look at it: it
-  had its first reading days ago, a committee reported on it, the houses are swapping
-  amendments, members forced a recorded vote, it passed a house, it moved
-  after a long silence, or it has waited far longer than usual.
+  had its first reading days ago, a committee reported on it, the houses are
+  swapping amendments, members forced a recorded vote, it passed a house, it
+  moved after a long silence, or it has waited far longer than usual.
   Administrators set a weight for each reason.
 - **Fading.** A reason about an event loses weight as it ages, then stops
   counting. A reason about a state that still holds, such as a bill that is
@@ -245,6 +245,9 @@ We checked the real system four ways:
 
 ## AI assistance
 
-I wrote this demo with an AI coding assistant. I decided what each page should show and checked each result in the browser; the assistant wrote much of the code, for the pages and the build script.
+I wrote this demo with an AI coding assistant. I decided what each page should
+show and checked each result in the browser; the assistant wrote much of the
+code, for the pages and the build script.
 
-I also used the assistant to anonymise the data: it generated the fictional records and helped me check that no real names remained.
+I also used the assistant to anonymise the data: it generated the fictional
+records and helped me check that no real names remained.
