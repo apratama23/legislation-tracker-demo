@@ -11,7 +11,7 @@ through it as a reporter would, but we replaced the real data with made-up
 data and took out the real names. The parts that collect, store and send are
 not here.
 
-**Live demo:** https://apratama23.github.io/legislation-tracker-demo/
+**Live demo:** available on request.
 
 > **Disclaimer.** This demo exists for portfolio purposes. We disguised the
 > real data: the bills, members, votes, documents and text are fictional.
